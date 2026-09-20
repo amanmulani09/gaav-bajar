@@ -22,6 +22,7 @@ import {
   cleanupUnused,
   deleteRemote,
   finishGoogleLogin,
+  isGoogleCallback,
   getFavoriteListings,
   getListing,
   getListingPhotoPaths,
@@ -121,6 +122,11 @@ function Market() {
   const feedRequest = useRef(0);
   const running = useRef(false);
   const scroll = useRef<ScrollView>(null);
+  const activeSession = useRef<Session | null>(null);
+  function acceptSession(next: Session | null) {
+    activeSession.current = next;
+    setSession(next);
+  }
   const userId = session?.user.id;
   const draftKey = userId ? `draft:${userId}` : "";
   const ready = Boolean(
@@ -199,6 +205,7 @@ function Market() {
   async function loadProfile() {
     if (!userId) return;
     const profileData = await getProfile(userId);
+    if (activeSession.current?.user.id !== userId) return;
     setProfile(profileData);
     setName(
       profileData?.display_name || session?.user.user_metadata.full_name || "",
@@ -210,8 +217,11 @@ function Market() {
       profileData.data_consent_at &&
       !profileData.suspended &&
       !profileData.deleting
-    )
-      setBlocks(await rpc("my_blocks"));
+    ) {
+      const nextBlocks = await rpc("my_blocks");
+      if (activeSession.current?.user.id === userId)
+        setBlocks(nextBlocks);
+    }
   }
   const loadFavorites = useCallback(async () => {
     if (!configured || !favoriteIds.length) {
@@ -229,20 +239,25 @@ function Market() {
   }, [favoriteIds, fail]);
   useEffect(() => {
     if (!configured) return;
-    supabase.auth.getSession().then(({ data, error }) => {
+    let current = true;
+    let authChanged = false;
+    void supabase.auth.getSession().then(({ data, error }) => {
+      if (!current || authChanged) return;
       if (error) fail(error);
-      else setSession(data.session);
+      else acceptSession(data.session);
+    }).catch((error) => { if (current && !authChanged) fail(error); });
+    const { data } = supabase.auth.onAuthStateChange((_event, next) => {
+      authChanged = true;
+      if (current) acceptSession(next);
     });
-    const { data } = supabase.auth.onAuthStateChange((_event, next) =>
-      setSession(next),
-    );
     const callback = (url: string | null) => {
-      if (url?.startsWith("gaavbajar://auth/callback?"))
+      if (url && isGoogleCallback(url))
         void finishGoogleLogin(url).catch(fail);
     };
     void Linking.getInitialURL().then(callback).catch(fail);
     const links = Linking.addEventListener("url", ({ url }) => callback(url));
     return () => {
+      current = false;
       data.subscription.unsubscribe();
       links.remove();
     };
@@ -255,6 +270,8 @@ function Market() {
   }, [screen, loadFavorites]);
   useEffect(() => {
     setProfile(null);
+    setName("");
+    setTerms(false);
     setDraft(null);
     setMyRows([]);
     setBlocks([]);
@@ -285,16 +302,17 @@ function Market() {
     return () => handler.remove();
   }, [screen, previousScreen, busy]);
 
-  async function requireGoogle(): Promise<Session> {
+  async function requireGoogle(): Promise<Session | null> {
     if (session) return session;
     if (!configured) throw new Error("setup");
     const next = await login();
-    if (!next) throw new Error("loginFailed");
-    setSession(next);
+    if (!next) return null;
+    acceptSession(next);
     return next;
   }
   async function syncProfile(currentSession: Session): Promise<Profile | null> {
     const currentProfile = await getProfile(currentSession.user.id);
+    if (activeSession.current?.user.id !== currentSession.user.id) return null;
     setProfile(currentProfile);
     setName(
       currentProfile?.display_name ||
@@ -310,6 +328,7 @@ function Market() {
       profile?.id === currentSession.user.id
         ? profile
         : await syncProfile(currentSession);
+    if (activeSession.current?.user.id !== currentSession.user.id) return false;
     if (
       !currentProfile?.terms_at ||
       !currentProfile.data_consent_at ||
@@ -344,6 +363,7 @@ function Market() {
   }
   async function startPost() {
     const currentSession = await requireGoogle();
+    if (!currentSession) return;
     if (!(await ensureJoined(currentSession))) return;
     const key = `draft:${currentSession.user.id}`;
     const local = await AsyncStorage.getItem(key);
@@ -354,6 +374,7 @@ function Market() {
   }
   async function openListing(item: Listing) {
     const currentSession = await requireGoogle();
+    if (!currentSession) return;
     if (!(await ensureJoined(currentSession))) return;
     const listing = await getListing(item.id);
     if (!listing) throw new Error("notFound");
@@ -365,6 +386,7 @@ function Market() {
   }
   async function toggleFavorite(id: string) {
     const currentSession = await requireGoogle();
+    if (!currentSession) return;
     if (!(await ensureJoined(currentSession))) return;
     setFavoriteIds((current) => toggleFavoriteId(current, id));
     setFavoriteRows((current) => current.filter((item) => item.id !== id));
@@ -565,12 +587,13 @@ function Market() {
     await deleteRemote();
     if (draftKey) await AsyncStorage.removeItem(draftKey);
     await supabase.auth.signOut({ scope: "local" });
-    setSession(null);
+    acceptSession(null);
     setScreen("browse");
     setNotice(t("accountDeleted"));
   }
   async function startLogin() {
     const currentSession = await requireGoogle();
+    if (!currentSession) return;
     await ensureJoined(currentSession);
   }
   async function saveProfile() {
@@ -622,8 +645,10 @@ function Market() {
     }
     void run(async () => {
       const currentSession = await requireGoogle();
+      if (!currentSession) return;
       if (target === "profile") {
         await syncProfile(currentSession);
+        if (activeSession.current?.user.id !== currentSession.user.id) return;
         setScreen("profile");
         return;
       }

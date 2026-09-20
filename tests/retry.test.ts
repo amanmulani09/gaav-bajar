@@ -135,3 +135,37 @@ it("asks Google to show account chooser and returns authenticated session", asyn
     },
   });
 });
+
+it.each(["cancel", "dismiss"])("returns no session when browser %s", async (type) => {
+  mocks.signInWithOAuth.mockResolvedValue({ data: { url: "https://accounts.google.com/oauth" }, error: null });
+  mocks.openAuthSessionAsync.mockResolvedValue({ type });
+  expect(await login()).toBeNull();
+  expect(mocks.exchangeCodeForSession).not.toHaveBeenCalled();
+  expect(mocks.getSession).not.toHaveBeenCalled();
+});
+it.each([
+  "https://evil.example/auth/callback?code=bad",
+  "gaavbajar://auth/other?code=bad",
+  "gaavbajar://user@auth/callback?code=bad",
+  "not a url",
+  "gaavbajar://auth/callback",
+  "gaavbajar://auth/callback?error=access_denied&code=bad",
+  "gaavbajar://auth/callback?code=bad#error=access_denied",
+])("rejects invalid OAuth callback without exchanging: %s", async (url) => {
+  await expect(finishGoogleLogin(url)).rejects.toThrow("loginFailed");
+  expect(mocks.exchangeCodeForSession).not.toHaveBeenCalled();
+});
+it("allows a failed exchange to retry", async () => {
+  mocks.exchangeCodeForSession.mockResolvedValueOnce({ error: new Error("offline") }).mockResolvedValueOnce({ error: null });
+  const url = "gaavbajar://auth/callback?code=retry-code";
+  await expect(finishGoogleLogin(url)).rejects.toThrow("offline");
+  await finishGoogleLogin(url);
+  expect(mocks.exchangeCodeForSession).toHaveBeenCalledTimes(2);
+});
+it("does not treat a successful callback without a session as cancellation", async () => {
+  mocks.signInWithOAuth.mockResolvedValue({ data: { url: "https://accounts.google.com/oauth" }, error: null });
+  mocks.openAuthSessionAsync.mockResolvedValue({ type: "success", url: "gaavbajar://auth/callback?code=no-session" });
+  mocks.exchangeCodeForSession.mockResolvedValue({ error: null });
+  mocks.getSession.mockResolvedValue({ data: { session: null }, error: null });
+  await expect(login()).rejects.toThrow("loginFailed");
+});

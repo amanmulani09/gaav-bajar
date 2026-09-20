@@ -22,8 +22,16 @@ Source uses a feature-first layout: `src/application` composes screens, `src/fea
 ```sh
 npm run check          # TypeScript + domain, real PostgreSQL-engine authorization tests
 npm run build:android  # Android JS/assets export, not a signed APK/AAB
-npm run build:web      # Browser rendering for local UI checks, not a marketplace launch
+npm run build:web      # Static web export to dist/
 ```
+
+## Web deployment
+
+Web app: https://gaav-bajar.vercel.app. Vercel project: `amanmulani09s-projects/gaav-bajar`.
+
+The first deployment uploads a local Expo web export through Vercel CLI; Git auto-deploy is not connected. `vercel.json` configures future source builds and serves `/auth/callback` from the app entry point. Source builds require the public Supabase environment variables at build time. Never upload the Google client secret or Supabase service-role key.
+
+Supabase allows `https://gaav-bajar.vercel.app/auth/callback` alongside the native callback. End-to-end Google sign-in remains a release check; the Google OAuth app is still in testing mode.
 
 ## Backend setup
 
@@ -60,7 +68,7 @@ npx eas-cli build --platform android --profile preview
 npx eas-cli build --platform android --profile production
 ```
 
-Put the three public environment variables in the chosen EAS environment before remote builds; local `.env` is gitignored. The preview profile generates an APK. Production generates an AAB. EAS project linking, credentials, signing keys, and Play developer ownership require the owner's account. Never commit signing keys. Build profiles do not contain a fabricated EAS project ID.
+Build profiles explicitly select `development`, `preview`, and `production` EAS environments. Put the three public environment variables in each environment used before remote builds; local `.env` is gitignored. The preview profile generates an APK. Production generates an AAB. EAS project linking, credentials, signing keys, and Play developer ownership require the owner's account. Never commit signing keys. Build profiles do not contain a fabricated EAS project ID.
 
 ## Product and data behavior
 
@@ -87,3 +95,25 @@ Support owner is Zero21 Studio (zero21studiocompany@gmail.com); its policy pages
 ## Verification notes
 
 See [verification results](docs/VERIFICATION.md) for passed checks and outstanding release gates, including Expo's currently unavailable recommended patch versions. Project-local `.npmrc` uses the public npm registry; it does not modify global npm settings.
+
+## Connecting the first backend
+
+The setup template is `.env.example`; copy it to `.env` and supply the public values. Missing, placeholder, or malformed URL configuration shows setup guidance. A public anon key or publishable key can use the existing `EXPO_PUBLIC_SUPABASE_ANON_KEY` variable. Configuration checks are not a connectivity or credential-validity test. Never embed Google client secrets or Supabase server keys in the app.
+
+For an early MVP with no real users, preview and production may use the same Supabase project: set the same public URL/key in both EAS environments. This shares all users, listings, photos, and auth settings; it does not isolate staging. Use disposable test data and split staging before public launch. Switching a build's backend requires rebuilding with the new public values.
+
+Before deploying, select the project deliberately and inspect its migration history:
+
+```sh
+npx supabase login
+npx supabase link --project-ref YOUR_PROJECT_REF
+npx supabase migration list
+npx supabase db push --dry-run
+npx supabase db push
+npx supabase functions deploy account-delete
+npx supabase functions deploy listing-delete
+```
+
+Configure hosted Google OAuth separately in the dashboards; migration deployment does not configure the provider. Google receives `https://<project-ref>.supabase.co/auth/v1/callback` (use the exact dashboard value). Supabase's redirect allowlist receives `gaavbajar://auth/callback`. Keep Google credentials in Supabase provider settings. The local `supabase/config.toml` does not enable a local Google provider; this workflow uses the hosted project.
+
+After setup, run the signed-device and two-account authorization checks in [RELEASE.md](docs/RELEASE.md). Passing unit tests and Android export does not establish hosted connectivity. See [implementation plan](docs/SUPABASE_AUTH_PLAN.md) for remaining cloud and device gates.

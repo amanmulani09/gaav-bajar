@@ -12,9 +12,38 @@ import {
 } from "./domain";
 
 WebBrowser.maybeCompleteAuthSession();
+export function isGoogleCallback(
+  url: string,
+  redirectTo = AuthSession.makeRedirectUri({
+    scheme: "gaavbajar",
+    path: "auth/callback",
+  }),
+): boolean {
+  try {
+    const actual = new URL(url);
+    const expected = new URL(redirectTo);
+    return (
+      actual.protocol === expected.protocol &&
+      actual.host === expected.host &&
+      actual.pathname === expected.pathname &&
+      !actual.username &&
+      !actual.password
+    );
+  } catch {
+    return false;
+  }
+}
 let exchange: { code: string; promise: Promise<void> } | null = null;
-export async function finishGoogleLogin(url: string): Promise<void> {
-  const code = new URL(url).searchParams.get("code");
+export async function finishGoogleLogin(
+  url: string,
+  redirectTo?: string,
+): Promise<void> {
+  if (!isGoogleCallback(url, redirectTo)) throw new Error("loginFailed");
+  const callback = new URL(url);
+  const fragment = new URLSearchParams(callback.hash.slice(1));
+  if (callback.searchParams.has("error") || fragment.has("error"))
+    throw new Error("loginFailed");
+  const code = callback.searchParams.get("code");
   if (!code) throw new Error("loginFailed");
   if (exchange?.code === code) return exchange.promise;
   const promise = (async () => {
@@ -46,10 +75,11 @@ export async function login(): Promise<Session | null> {
   if (error) throw error;
   const result = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
   if (result.type === "success") {
-    await finishGoogleLogin(result.url);
+    await finishGoogleLogin(result.url, redirectTo);
     const { data: sessionData, error: sessionError } =
       await supabase.auth.getSession();
     if (sessionError) throw sessionError;
+    if (!sessionData.session) throw new Error("loginFailed");
     return sessionData.session;
   }
   return null;
