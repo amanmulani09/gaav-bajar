@@ -1,0 +1,44 @@
+# Release gate
+
+## Automated
+
+- `npm ci`, `npm run check`, `npm run build:android`.
+- Database tests run migrations in PGlite (real PostgreSQL compiled to WASM) with mocked Supabase auth/storage schemas. They check SQL functions, grants, RLS and constraints. They do not replace hosted Storage, GoTrue, or Edge Function integration tests.
+
+## Real staging backend and signed Android build — required
+
+- Fresh install: browse as guest, switch Marathi/Hindi, restart app, retain chosen language.
+- Google login on signed preview build; OAuth return, cancel, logout, expired session, network failure. Backend records must show confirmed Google identity.
+- Accept terms, save profile. Submit priced/contact-for-price listings, with zero/three photos, and separate/default WhatsApp numbers. Check all 36 districts; Mumbai City allows no taluka.
+- Kill connection during each photo upload and during save; retry same draft. Exactly one listing, no duplicate photo records. Relaunch and resume draft; discard it. Edit existing listing while offline, then retry online. Replace three photos and verify old files removed.
+- Guest cannot query private contacts, obtain contact RPC, or read draft/pending/sold/removed content through REST. Second account cannot edit/sell/delete first account's listing or attach first account's photos.
+- Basic URL/prohibited text goes to pending; administrator can review/approve/remove. Report listing and seller; block/unblock; verify feed, details, contact and signed-image access policies. Verify suspended account cannot publish.
+- Call opens dialer without initiating a call; WhatsApp opens a composed enquiry without sending it. Test with and without WhatsApp installed; phone alternative stays visible.
+- Mark sold; disappears from public search. Delete listing; photos and row gone. Delete account with active/draft/sold listings; Auth/profile/contact/storage content gone. Simulate storage cleanup failure; content hidden, retry possible, no false success message.
+- Small Android screen, large font setting, keyboard, back button, screen-reader labels, 3G/slow network. Native Marathi/Hindi speaker reviews copy.
+- Public privacy/terms/deletion URLs work without app. Request arrives at real support inbox; owner can fulfill it.
+
+## Play Console
+
+- Confirm application ID, brand assets, operator and support details. Link owner's EAS account and use its signing credentials.
+- Upload production AAB. Complete privacy URL, Data safety, content rating, target audience (adult users), app access instructions, support contact, and Marathi/Hindi store text/screenshots.
+- Data safety must accurately describe personal information (email, name, phone/location entered in listings), user content/photos, user IDs, and reports processed by the app. Do not claim zero collection, identity verification, or guarantees. No ads/payment/tracking SDKs are included.
+- Current new-personal-account rule: 12 opted-in testers for 14 continuous days before applying for production access. Check your account's current requirements; review/approval timing is outside the app's control.
+- Provide reviewers actual access instructions for Google sign-in and a functioning backend; do not bypass RLS or ship production demo accounts.
+- Recruit real testers; seed 20 seller-approved real listings using their Google accounts/contact consent. Check each photo and seller contact. No invented production listings.
+- Assign daily moderation owner and deletion inbox owner. Confirm free-tier capacity and storage usage before expanding rollout.
+
+## Suggested store text (review with a native speaker)
+
+Marathi short description: महाराष्ट्रातील शेतीची साधने, जनावरे व मालमत्तेसाठी स्थानिक संपर्क बाजार.
+
+Hindi short description: महाराष्ट्र में खेती के औजार, पशु और संपत्ति के लिए स्थानीय संपर्क बाजार।
+
+Long-description points: browse by location/category; post local listings; contact sellers via phone/WhatsApp; Marathi/Hindi UI; no payments or delivery; Google-email verification only; report and block inappropriate content.
+
+## Official references
+
+- https://support.google.com/googleplay/android-developer/answer/14151465
+- https://support.google.com/googleplay/android-developer/answer/9876937
+- https://support.google.com/googleplay/android-developer/answer/13327111
+- https://supabase.com/pricing

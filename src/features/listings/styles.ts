@@ -1,0 +1,88 @@
+import { StyleSheet } from "react-native";
+import { colors } from "../../shared/ui";
+
+export const listingStyles = StyleSheet.create({
+  feedContent: { padding: 20, paddingBottom: 35 },
+  feedSection: { gap: 18, marginBottom: 18 },
+  hero: {
+    backgroundColor: colors.dark,
+    padding: 23,
+    borderRadius: 22,
+    gap: 14,
+  },
+  eyebrow: {
+    color: colors.orange,
+    fontSize: 12,
+    fontWeight: "700",
+    letterSpacing: 1,
+  },
+  heroTitle: {
+    color: "white",
+    fontSize: 30,
+    fontWeight: "800",
+    lineHeight: 44,
+  },
+  heroBody: { fontSize: 15, color: "#D7E5D8", lineHeight: 26 },
+  chip: {
+    paddingVertical: 12,
+    paddingHorizontal: 17,
+    borderWidth: 1,
+    borderColor: colors.line,
+    borderRadius: 30,
+    backgroundColor: colors.white,
+  },
+  chipActive: { backgroundColor: colors.green, borderColor: colors.green },
+  chipText: { color: colors.ink, fontSize: 14, fontWeight: "600" },
+  filterRow: { flexDirection: "row", gap: 12 },
+  listing: {
+    flexDirection: "row",
+    backgroundColor: colors.white,
+    padding: 12,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: colors.line,
+  },
+  cardMain: { flex: 1, flexDirection: "row", gap: 15 },
+  favoriteButton: {
+    width: 38,
+    height: 38,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 19,
+    backgroundColor: colors.pale,
+  },
+  favoriteIcon: { color: colors.red, fontSize: 24, lineHeight: 28 },
+  thumbnail: {
+    width: 105,
+    height: 120,
+    borderRadius: 12,
+    backgroundColor: colors.pale,
+  },
+  placeholder: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#E7EDDD",
+  },
+  category: {
+    color: colors.muted,
+    fontSize: 12,
+    fontWeight: "600",
+    lineHeight: 20,
+  },
+  listingTitle: {
+    color: colors.ink,
+    fontSize: 17,
+    fontWeight: "700",
+    lineHeight: 26,
+  },
+  price: {
+    color: colors.green,
+    fontSize: 18,
+    fontWeight: "800",
+    lineHeight: 30,
+  },
+  safety: { padding: 18, backgroundColor: "#EEF0E4", borderRadius: 16, gap: 8 },
+  photoRow: { flexDirection: "row", gap: 10 },
+  editPhoto: { width: "100%", height: 100, borderRadius: 12 },
+  detailPhoto: { width: 310, height: 240, borderRadius: 18 },
+});

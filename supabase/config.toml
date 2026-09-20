@@ -1,0 +1,23 @@
+project_id = "gaav-bajar"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[auth]
+enabled = true
+site_url = "http://localhost:8081"
+additional_redirect_urls = ["gaavbajar://auth/callback"]
+
+[functions.account-delete]
+verify_jwt = false
+
+[functions.listing-delete]
+verify_jwt = false

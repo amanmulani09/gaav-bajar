@@ -1,0 +1,2043 @@
+[
+  {
+    "id": "466",
+    "name": "अहिल्यानगर",
+    "en": "Ahilyanagar",
+    "talukas": [
+      {
+        "id": "4201",
+        "name": "अकोले",
+        "en": "Akole"
+      },
+      {
+        "id": "4202",
+        "name": "संगमनेर",
+        "en": "Sangamner"
+      },
+      {
+        "id": "4203",
+        "name": "कोपरगाव",
+        "en": "Kopargaon"
+      },
+      {
+        "id": "4204",
+        "name": "रहाता",
+        "en": "Rahta"
+      },
+      {
+        "id": "4205",
+        "name": "श्रीरामपूर",
+        "en": "Shrirampur"
+      },
+      {
+        "id": "4206",
+        "name": "नेवासा",
+        "en": "Nevasa"
+      },
+      {
+        "id": "4207",
+        "name": "शेगाव",
+        "en": "Shevgaon"
+      },
+      {
+        "id": "4208",
+        "name": "पाथर्डी",
+        "en": "Pathardi"
+      },
+      {
+        "id": "4209",
+        "name": "नगर",
+        "en": "Nagar"
+      },
+      {
+        "id": "4210",
+        "name": "राहुरी",
+        "en": "Rahuri"
+      },
+      {
+        "id": "4211",
+        "name": "पारनेर",
+        "en": "Parner"
+      },
+      {
+        "id": "4212",
+        "name": "श्रीगोंदा",
+        "en": "Shrigonda"
+      },
+      {
+        "id": "4213",
+        "name": "कर्जत",
+        "en": "Karjat"
+      },
+      {
+        "id": "4214",
+        "name": "जामखेड",
+        "en": "Jamkhed"
+      }
+    ]
+  },
+  {
+    "id": "467",
+    "name": "अकोला",
+    "en": "Akola",
+    "talukas": [
+      {
+        "id": "3988",
+        "name": "तेल्हारा",
+        "en": "Telhara"
+      },
+      {
+        "id": "3989",
+        "name": "अकोट",
+        "en": "Akot"
+      },
+      {
+        "id": "3990",
+        "name": "बाळापूर",
+        "en": "Balapur"
+      },
+      {
+        "id": "3991",
+        "name": "अकोला",
+        "en": "Akola"
+      },
+      {
+        "id": "3992",
+        "name": "मुर्तिजापूर",
+        "en": "Murtijapur"
+      },
+      {
+        "id": "3993",
+        "name": "पातूर",
+        "en": "Patur"
+      },
+      {
+        "id": "3994",
+        "name": "बार्शीटाकळी",
+        "en": "Barshitakli"
+      }
+    ]
+  },
+  {
+    "id": "468",
+    "name": "अमरावती",
+    "en": "Amravati",
+    "talukas": [
+      {
+        "id": "4001",
+        "name": "धारणी",
+        "en": "Dharni"
+      },
+      {
+        "id": "4002",
+        "name": "चिखलदरा",
+        "en": "Chikhaldara"
+      },
+      {
+        "id": "4003",
+        "name": "अंजनगाव सुर्जी",
+        "en": "Anjangaon Surji"
+      },
+      {
+        "id": "4004",
+        "name": "अचलपूर",
+        "en": "Achalpur"
+      },
+      {
+        "id": "4005",
+        "name": "चांदूर बाजार",
+        "en": "Chandurbazar"
+      },
+      {
+        "id": "4006",
+        "name": "मोर्शी",
+        "en": "Morshi"
+      },
+      {
+        "id": "4007",
+        "name": "वरूड",
+        "en": "Warud"
+      },
+      {
+        "id": "4008",
+        "name": "तिवसा",
+        "en": "Tiosa"
+      },
+      {
+        "id": "4009",
+        "name": "अमरावती",
+        "en": "Amravati"
+      },
+      {
+        "id": "4010",
+        "name": "भातकुली",
+        "en": "Bhatkuli"
+      },
+      {
+        "id": "4011",
+        "name": "दर्यापूर",
+        "en": "Daryapur"
+      },
+      {
+        "id": "4012",
+        "name": "नांदगाव खंडेश्वर",
+        "en": "Nandgaon-Khandeshwar"
+      },
+      {
+        "id": "4013",
+        "name": "चांदूर रेल्वे",
+        "en": "Chandur Railway"
+      },
+      {
+        "id": "4014",
+        "name": "धामनगाव रेल्वे",
+        "en": "Dhamangaon Railway"
+      }
+    ]
+  },
+  {
+    "id": "469",
+    "name": "छत्रपती संभाजीनगर",
+    "en": "Chhatrapati Sambhajinagar",
+    "talukas": [
+      {
+        "id": "4133",
+        "name": "कन्नड",
+        "en": "Kannad"
+      },
+      {
+        "id": "4134",
+        "name": "सोयगाव",
+        "en": "Soegaon"
+      },
+      {
+        "id": "4135",
+        "name": "सिल्लोड",
+        "en": "Sillod"
+      },
+      {
+        "id": "4136",
+        "name": "फुलंब्री",
+        "en": "Phulambri"
+      },
+      {
+        "id": "4137",
+        "name": "छत्रपती संभाजीनगर",
+        "en": "Chhatrapati Sambhajinagar"
+      },
+      {
+        "id": "4138",
+        "name": "खुलताबाद",
+        "en": "Khuldabad"
+      },
+      {
+        "id": "4139",
+        "name": "वैजापूर",
+        "en": "Vaijapur"
+      },
+      {
+        "id": "4140",
+        "name": "गंगापूर",
+        "en": "Gangapur"
+      },
+      {
+        "id": "4141",
+        "name": "पैठण",
+        "en": "Paithan"
+      }
+    ]
+  },
+  {
+    "id": "470",
+    "name": "बीड",
+    "en": "Beed",
+    "talukas": [
+      {
+        "id": "4215",
+        "name": "आष्टी",
+        "en": "Ashti"
+      },
+      {
+        "id": "4216",
+        "name": "पाटोदा",
+        "en": "Patoda"
+      },
+      {
+        "id": "4217",
+        "name": "शिरूर (कासार)",
+        "en": "Shirur (Kasar)"
+      },
+      {
+        "id": "4218",
+        "name": "गेवराई",
+        "en": "Georai"
+      },
+      {
+        "id": "4219",
+        "name": "माजलगाव",
+        "en": "Majalgaon"
+      },
+      {
+        "id": "4220",
+        "name": "वडवणी",
+        "en": "Wadwani"
+      },
+      {
+        "id": "4221",
+        "name": "बीड",
+        "en": "Beed"
+      },
+      {
+        "id": "4222",
+        "name": "केज",
+        "en": "Kaij"
+      },
+      {
+        "id": "4223",
+        "name": "धारूर",
+        "en": "Dharur"
+      },
+      {
+        "id": "4224",
+        "name": "परळी",
+        "en": "Parli"
+      },
+      {
+        "id": "4225",
+        "name": "आंबेजोगाई",
+        "en": "Ambejogai"
+      }
+    ]
+  },
+  {
+    "id": "471",
+    "name": "भंडारा",
+    "en": "Bhandara",
+    "talukas": [
+      {
+        "id": "4037",
+        "name": "तुमसर",
+        "en": "Tumsar"
+      },
+      {
+        "id": "4038",
+        "name": "मोहाडी",
+        "en": "Mohadi"
+      },
+      {
+        "id": "4039",
+        "name": "भंडारा",
+        "en": "Bhandara"
+      },
+      {
+        "id": "4040",
+        "name": "साकोली",
+        "en": "Sakoli"
+      },
+      {
+        "id": "4041",
+        "name": "लाखनी",
+        "en": "Lakhani"
+      },
+      {
+        "id": "4042",
+        "name": "पवनी",
+        "en": "Pauni"
+      },
+      {
+        "id": "4043",
+        "name": "लाखंदूर",
+        "en": "Lakhandur"
+      }
+    ]
+  },
+  {
+    "id": "472",
+    "name": "बुलढाणा",
+    "en": "Buldhana",
+    "talukas": [
+      {
+        "id": "3975",
+        "name": "जळगाव (जामोद)",
+        "en": "Jalgaon (Jamod)"
+      },
+      {
+        "id": "3976",
+        "name": "संग्रामपूर",
+        "en": "Sangrampur"
+      },
+      {
+        "id": "3977",
+        "name": "शेगाव",
+        "en": "Shegaon"
+      },
+      {
+        "id": "3978",
+        "name": "नांदुरा",
+        "en": "Nandura"
+      },
+      {
+        "id": "3979",
+        "name": "मलकापूर",
+        "en": "Malkapur"
+      },
+      {
+        "id": "3980",
+        "name": "मोताळा",
+        "en": "Motala"
+      },
+      {
+        "id": "3981",
+        "name": "खामगाव",
+        "en": "Khamgaon"
+      },
+      {
+        "id": "3982",
+        "name": "मेहकर",
+        "en": "Mehkar"
+      },
+      {
+        "id": "3983",
+        "name": "चिखली",
+        "en": "Chikhli"
+      },
+      {
+        "id": "3984",
+        "name": "बुलडाणा",
+        "en": "Buldana"
+      },
+      {
+        "id": "3985",
+        "name": "देउळगाव राजा",
+        "en": "Deolgaon Raja"
+      },
+      {
+        "id": "3986",
+        "name": "सिंदखेड राजा",
+        "en": "Sindkhed Raja"
+      },
+      {
+        "id": "3987",
+        "name": "लोणार",
+        "en": "Lonar"
+      }
+    ]
+  },
+  {
+    "id": "473",
+    "name": "चंद्रपूर",
+    "en": "Chandrapur",
+    "talukas": [
+      {
+        "id": "4064",
+        "name": "वरोरा",
+        "en": "Warora"
+      },
+      {
+        "id": "4065",
+        "name": "चिमूर",
+        "en": "Chimur"
+      },
+      {
+        "id": "4066",
+        "name": "नागभिड",
+        "en": "Nagbhid"
+      },
+      {
+        "id": "4067",
+        "name": "ब्रम्हपुरी",
+        "en": "Brahmapuri"
+      },
+      {
+        "id": "4068",
+        "name": "सावली",
+        "en": "Sawali"
+      },
+      {
+        "id": "4069",
+        "name": "सिंदेवाही",
+        "en": "Sindewahi"
+      },
+      {
+        "id": "4070",
+        "name": "भद्रावती",
+        "en": "Bhadravati"
+      },
+      {
+        "id": "4071",
+        "name": "चंद्रपूर",
+        "en": "Chandrapur"
+      },
+      {
+        "id": "4072",
+        "name": "मुल",
+        "en": "Mul"
+      },
+      {
+        "id": "4073",
+        "name": "पोम्भूर्णा",
+        "en": "Pombhurna"
+      },
+      {
+        "id": "4074",
+        "name": "बल्लारपूर",
+        "en": "Ballarpur"
+      },
+      {
+        "id": "4075",
+        "name": "कोरपना",
+        "en": "Korpana"
+      },
+      {
+        "id": "4076",
+        "name": "जिवती",
+        "en": "Jiwati"
+      },
+      {
+        "id": "4077",
+        "name": "राजुरा",
+        "en": "Rajura"
+      },
+      {
+        "id": "4078",
+        "name": "गोंडपिपरी",
+        "en": "Gondpipri"
+      }
+    ]
+  },
+  {
+    "id": "474",
+    "name": "धुळे",
+    "en": "Dhule",
+    "talukas": [
+      {
+        "id": "3956",
+        "name": "शिरपूर",
+        "en": "Shirpur"
+      },
+      {
+        "id": "3957",
+        "name": "सिंदखेडे",
+        "en": "Sindkhede"
+      },
+      {
+        "id": "3958",
+        "name": "साक्री",
+        "en": "Sakri"
+      },
+      {
+        "id": "3959",
+        "name": "धुळे",
+        "en": "Dhule"
+      }
+    ]
+  },
+  {
+    "id": "475",
+    "name": "गडचिरोली",
+    "en": "Gadchiroli",
+    "talukas": [
+      {
+        "id": "4052",
+        "name": "देसाईगंज (वडसा)",
+        "en": "Desaiganj (Vadasa)"
+      },
+      {
+        "id": "4053",
+        "name": "आरमोरी",
+        "en": "Armori"
+      },
+      {
+        "id": "4054",
+        "name": "कुरखेडा",
+        "en": "Kurkheda"
+      },
+      {
+        "id": "4055",
+        "name": "कोरची",
+        "en": "Korchi"
+      },
+      {
+        "id": "4056",
+        "name": "धानोरा",
+        "en": "Dhanora"
+      },
+      {
+        "id": "4057",
+        "name": "गडचिरोली",
+        "en": "Gadchiroli"
+      },
+      {
+        "id": "4058",
+        "name": "चामोर्शी",
+        "en": "Chamorshi"
+      },
+      {
+        "id": "4059",
+        "name": "मुलचेरा",
+        "en": "Mulchera"
+      },
+      {
+        "id": "4060",
+        "name": "एटापल्ली",
+        "en": "Etapalli"
+      },
+      {
+        "id": "4061",
+        "name": "भामरागड",
+        "en": "Bhamragad"
+      },
+      {
+        "id": "4062",
+        "name": "अहेरी",
+        "en": "Aheri"
+      },
+      {
+        "id": "4063",
+        "name": "सिरोंचा",
+        "en": "Sironcha"
+      }
+    ]
+  },
+  {
+    "id": "476",
+    "name": "गोंदीया",
+    "en": "Gondia",
+    "talukas": [
+      {
+        "id": "4044",
+        "name": "तिरोडा",
+        "en": "Tirora"
+      },
+      {
+        "id": "4045",
+        "name": "गोरेगाव",
+        "en": "Goregaon"
+      },
+      {
+        "id": "4046",
+        "name": "गोंदिया",
+        "en": "Gondiya"
+      },
+      {
+        "id": "4047",
+        "name": "आमगाव",
+        "en": "Amgaon"
+      },
+      {
+        "id": "4048",
+        "name": "सालेकसा",
+        "en": "Salekasa"
+      },
+      {
+        "id": "4049",
+        "name": "सडक अर्जुनी",
+        "en": "Sadak-Arjuni"
+      },
+      {
+        "id": "4050",
+        "name": "अर्जुनी मोरगाव",
+        "en": "Arjuni Morgaon"
+      },
+      {
+        "id": "4051",
+        "name": "देवरी",
+        "en": "Deori"
+      }
+    ]
+  },
+  {
+    "id": "477",
+    "name": "हिंगोली",
+    "en": "Hingoli",
+    "talukas": [
+      {
+        "id": "4111",
+        "name": "सेनगाव",
+        "en": "Sengaon"
+      },
+      {
+        "id": "4112",
+        "name": "हिंगोली",
+        "en": "Hingoli"
+      },
+      {
+        "id": "4113",
+        "name": "औंढा (नागनाथ)",
+        "en": "Aundha (Nagnath)"
+      },
+      {
+        "id": "4114",
+        "name": "कळमनुरी",
+        "en": "Kalamnuri"
+      },
+      {
+        "id": "4115",
+        "name": "वसमत",
+        "en": "Vasmath"
+      }
+    ]
+  },
+  {
+    "id": "478",
+    "name": "जळगाव",
+    "en": "Jalgaon",
+    "talukas": [
+      {
+        "id": "3960",
+        "name": "चोपडा",
+        "en": "Chopda"
+      },
+      {
+        "id": "3961",
+        "name": "यावल",
+        "en": "Yawal"
+      },
+      {
+        "id": "3962",
+        "name": "रावेर",
+        "en": "Raver"
+      },
+      {
+        "id": "3963",
+        "name": "मुक्ताईनगर(एदलाबाद)",
+        "en": "Muktainagar (Edlabad)"
+      },
+      {
+        "id": "3964",
+        "name": "बोधवड",
+        "en": "Bodvad"
+      },
+      {
+        "id": "3965",
+        "name": "भुसावळ",
+        "en": "Bhusawal"
+      },
+      {
+        "id": "3966",
+        "name": "जळगाव",
+        "en": "Jalgaon"
+      },
+      {
+        "id": "3967",
+        "name": "एरंडोल",
+        "en": "Erandol"
+      },
+      {
+        "id": "3968",
+        "name": "धरणगाव",
+        "en": "Dharangaon"
+      },
+      {
+        "id": "3969",
+        "name": "अमळनेर",
+        "en": "Amalner"
+      },
+      {
+        "id": "3970",
+        "name": "पारोळा",
+        "en": "Parola"
+      },
+      {
+        "id": "3971",
+        "name": "भडगाव",
+        "en": "Bhadgaon"
+      },
+      {
+        "id": "3972",
+        "name": "चाळीसगाव",
+        "en": "Chalisgaon"
+      },
+      {
+        "id": "3973",
+        "name": "पाचोरा",
+        "en": "Pachora"
+      },
+      {
+        "id": "3974",
+        "name": "जामनेर",
+        "en": "Jamner"
+      }
+    ]
+  },
+  {
+    "id": "479",
+    "name": "जालना",
+    "en": "Jalna",
+    "talukas": [
+      {
+        "id": "4125",
+        "name": "भोकरदन",
+        "en": "Bhokardan"
+      },
+      {
+        "id": "4126",
+        "name": "जाफ्राबाद",
+        "en": "Jafrabad"
+      },
+      {
+        "id": "4127",
+        "name": "जालना",
+        "en": "Jalna"
+      },
+      {
+        "id": "4128",
+        "name": "बदनापूर",
+        "en": "Badnapur"
+      },
+      {
+        "id": "4129",
+        "name": "अंबड",
+        "en": "Ambad"
+      },
+      {
+        "id": "4130",
+        "name": "घनसावंगी",
+        "en": "Ghansawangi"
+      },
+      {
+        "id": "4131",
+        "name": "परतूर",
+        "en": "Partur"
+      },
+      {
+        "id": "4132",
+        "name": "मंठा",
+        "en": "Mantha"
+      }
+    ]
+  },
+  {
+    "id": "480",
+    "name": "कोल्हापूर",
+    "en": "Kolhapur",
+    "talukas": [
+      {
+        "id": "4283",
+        "name": "शाहूवाडी",
+        "en": "Shahuwadi"
+      },
+      {
+        "id": "4284",
+        "name": "पन्हाळा",
+        "en": "Panhala"
+      },
+      {
+        "id": "4285",
+        "name": "हातकणंगले",
+        "en": "Hatkanangle"
+      },
+      {
+        "id": "4286",
+        "name": "शिरोळ",
+        "en": "Shirol"
+      },
+      {
+        "id": "4287",
+        "name": "करवीर",
+        "en": "Karvir"
+      },
+      {
+        "id": "4288",
+        "name": "गगनबावडा",
+        "en": "Gaganbawada"
+      },
+      {
+        "id": "4289",
+        "name": "राधानगरी",
+        "en": "Radhanagari"
+      },
+      {
+        "id": "4290",
+        "name": "कागल",
+        "en": "Kagal"
+      },
+      {
+        "id": "4291",
+        "name": "भूदरगड",
+        "en": "Bhudargad"
+      },
+      {
+        "id": "4292",
+        "name": "आजरा",
+        "en": "Ajra"
+      },
+      {
+        "id": "4293",
+        "name": "गडहिंग्लज",
+        "en": "Gadhinglaj"
+      },
+      {
+        "id": "4294",
+        "name": "चंदगड",
+        "en": "Chandgad"
+      }
+    ]
+  },
+  {
+    "id": "481",
+    "name": "लातूर",
+    "en": "Latur",
+    "talukas": [
+      {
+        "id": "4226",
+        "name": "लातूर",
+        "en": "Latur"
+      },
+      {
+        "id": "4227",
+        "name": "रेनापूर",
+        "en": "Renapur"
+      },
+      {
+        "id": "4228",
+        "name": "अहमदपूर",
+        "en": "Ahmadpur"
+      },
+      {
+        "id": "4229",
+        "name": "जलकोट",
+        "en": "Jalkot"
+      },
+      {
+        "id": "4230",
+        "name": "चाकूर",
+        "en": "Chakur"
+      },
+      {
+        "id": "4231",
+        "name": "शिरूर अनंतपाळ",
+        "en": "Shirur Anantpal"
+      },
+      {
+        "id": "4232",
+        "name": "औसा",
+        "en": "Ausa"
+      },
+      {
+        "id": "4233",
+        "name": "निलंगा",
+        "en": "Nilanga"
+      },
+      {
+        "id": "4234",
+        "name": "देवनी",
+        "en": "Deoni"
+      },
+      {
+        "id": "4235",
+        "name": "उदगीर",
+        "en": "Udgir"
+      }
+    ]
+  },
+  {
+    "id": "482",
+    "name": "मुंबई",
+    "en": "Mumbai",
+    "talukas": []
+  },
+  {
+    "id": "483",
+    "name": "मुंबई उपनगर",
+    "en": "Mumbai Suburban",
+    "talukas": [
+      {
+        "id": "7179",
+        "name": "अंधेरी",
+        "en": "Andheri"
+      },
+      {
+        "id": "7180",
+        "name": "कुर्ला",
+        "en": "Kurla"
+      },
+      {
+        "id": "7181",
+        "name": "बोरीवली",
+        "en": "Borivali"
+      }
+    ]
+  },
+  {
+    "id": "484",
+    "name": "नागपूर",
+    "en": "Nagpur",
+    "talukas": [
+      {
+        "id": "4023",
+        "name": "नरखेड",
+        "en": "Narkhed"
+      },
+      {
+        "id": "4024",
+        "name": "काटोल",
+        "en": "Katol"
+      },
+      {
+        "id": "4025",
+        "name": "कळमेश्वर",
+        "en": "Kalameshwar"
+      },
+      {
+        "id": "4026",
+        "name": "सावनेर",
+        "en": "Savner"
+      },
+      {
+        "id": "4027",
+        "name": "पारशिवनी",
+        "en": "Parseoni"
+      },
+      {
+        "id": "4028",
+        "name": "रामटेक",
+        "en": "Ramtek"
+      },
+      {
+        "id": "4029",
+        "name": "मौदा",
+        "en": "Mauda"
+      },
+      {
+        "id": "4030",
+        "name": "कामठी",
+        "en": "Kamptee"
+      },
+      {
+        "id": "4031",
+        "name": "नागपूर (ग्रामीण)",
+        "en": "Nagpur (Rural)"
+      },
+      {
+        "id": "4032",
+        "name": "नागपूर (शहर)",
+        "en": "Nagpur (Urban)"
+      },
+      {
+        "id": "4033",
+        "name": "हिंगणा",
+        "en": "Hingna"
+      },
+      {
+        "id": "4034",
+        "name": "उमरेड",
+        "en": "Umred"
+      },
+      {
+        "id": "4035",
+        "name": "कुही",
+        "en": "Kuhi"
+      },
+      {
+        "id": "4036",
+        "name": "भिवापूर",
+        "en": "Bhiwapur"
+      }
+    ]
+  },
+  {
+    "id": "485",
+    "name": "नांदेड",
+    "en": "Nanded",
+    "talukas": [
+      {
+        "id": "4095",
+        "name": "माहूर",
+        "en": "Mahur"
+      },
+      {
+        "id": "4096",
+        "name": "किनवत",
+        "en": "Kinwat"
+      },
+      {
+        "id": "4097",
+        "name": "हिमायतनगर",
+        "en": "Himayatnagar"
+      },
+      {
+        "id": "4098",
+        "name": "हदगाव",
+        "en": "Hadgaon"
+      },
+      {
+        "id": "4099",
+        "name": "अर्धापूर",
+        "en": "Ardhapur"
+      },
+      {
+        "id": "4100",
+        "name": "नांदेड",
+        "en": "Nanded"
+      },
+      {
+        "id": "4101",
+        "name": "मुदखेड",
+        "en": "Mudkhed"
+      },
+      {
+        "id": "4102",
+        "name": "भोकर",
+        "en": "Bhokar"
+      },
+      {
+        "id": "4103",
+        "name": "उमरी",
+        "en": "Umri"
+      },
+      {
+        "id": "4104",
+        "name": "धर्माबाद",
+        "en": "Dharmabad"
+      },
+      {
+        "id": "4105",
+        "name": "बिलोली",
+        "en": "Biloli"
+      },
+      {
+        "id": "4106",
+        "name": "नायगाव (खैरगाव)",
+        "en": "Naigaon (Khairgaon)"
+      },
+      {
+        "id": "4107",
+        "name": "लोहा",
+        "en": "Loha"
+      },
+      {
+        "id": "4108",
+        "name": "कंधार",
+        "en": "Kandhar"
+      },
+      {
+        "id": "4109",
+        "name": "मुखेड",
+        "en": "Mukhed"
+      },
+      {
+        "id": "4110",
+        "name": "देगलुर",
+        "en": "Deglur"
+      }
+    ]
+  },
+  {
+    "id": "486",
+    "name": "नंदूरबार",
+    "en": "Nandurbar",
+    "talukas": [
+      {
+        "id": "3950",
+        "name": "अक्कलकुवा",
+        "en": "Akkalkuwa"
+      },
+      {
+        "id": "3951",
+        "name": "अकर्नी",
+        "en": "Akrani"
+      },
+      {
+        "id": "3952",
+        "name": "तलोदा",
+        "en": "Talode"
+      },
+      {
+        "id": "3953",
+        "name": "शहादा",
+        "en": "Shahade"
+      },
+      {
+        "id": "3954",
+        "name": "नंदूरबार",
+        "en": "Nandurbar"
+      },
+      {
+        "id": "3955",
+        "name": "नवापूर",
+        "en": "Nawapur"
+      }
+    ]
+  },
+  {
+    "id": "487",
+    "name": "नाशिक",
+    "en": "Nashik",
+    "talukas": [
+      {
+        "id": "4142",
+        "name": "सुरगना",
+        "en": "Surgana"
+      },
+      {
+        "id": "4143",
+        "name": "कालवण",
+        "en": "Kalwan"
+      },
+      {
+        "id": "4144",
+        "name": "देवळा",
+        "en": "Deola"
+      },
+      {
+        "id": "4145",
+        "name": "बागलण",
+        "en": "Baglan"
+      },
+      {
+        "id": "4146",
+        "name": "मालेगाव",
+        "en": "Malegaon"
+      },
+      {
+        "id": "4147",
+        "name": "नांदगाव",
+        "en": "Nandgaon"
+      },
+      {
+        "id": "4148",
+        "name": "चांदवड",
+        "en": "Chandvad"
+      },
+      {
+        "id": "4149",
+        "name": "दिंडोरी",
+        "en": "Dindori"
+      },
+      {
+        "id": "4150",
+        "name": "पेठ",
+        "en": "Peth"
+      },
+      {
+        "id": "4151",
+        "name": "त्र्यंबक",
+        "en": "Trimbakeshwar"
+      },
+      {
+        "id": "4152",
+        "name": "नाशिक",
+        "en": "Nashik"
+      },
+      {
+        "id": "4153",
+        "name": "इगतपूरी",
+        "en": "Igatpuri"
+      },
+      {
+        "id": "4154",
+        "name": "सिन्नर",
+        "en": "Sinnar"
+      },
+      {
+        "id": "4155",
+        "name": "निफाड",
+        "en": "Niphad"
+      },
+      {
+        "id": "4156",
+        "name": "येवला",
+        "en": "Yevla"
+      }
+    ]
+  },
+  {
+    "id": "488",
+    "name": "धाराशिव",
+    "en": "Dharashiv",
+    "talukas": [
+      {
+        "id": "4236",
+        "name": "परंडा",
+        "en": "Paranda"
+      },
+      {
+        "id": "4237",
+        "name": "भूम",
+        "en": "Bhum"
+      },
+      {
+        "id": "4238",
+        "name": "वाशी",
+        "en": "Washi"
+      },
+      {
+        "id": "4239",
+        "name": "कळंब",
+        "en": "Kalamb"
+      },
+      {
+        "id": "4240",
+        "name": "धाराशिव",
+        "en": "Dharashiv"
+      },
+      {
+        "id": "4241",
+        "name": "तुळजापूर",
+        "en": "Tuljapur"
+      },
+      {
+        "id": "4242",
+        "name": "लोहारा",
+        "en": "Lohara"
+      },
+      {
+        "id": "4243",
+        "name": "उमरगा",
+        "en": "Omarga"
+      }
+    ]
+  },
+  {
+    "id": "489",
+    "name": "परभणी",
+    "en": "Parbhani",
+    "talukas": [
+      {
+        "id": "4116",
+        "name": "सेलू",
+        "en": "Selu"
+      },
+      {
+        "id": "4117",
+        "name": "जिंतुर",
+        "en": "Jintur"
+      },
+      {
+        "id": "4118",
+        "name": "परभणी",
+        "en": "Parbhani"
+      },
+      {
+        "id": "4119",
+        "name": "मानवत",
+        "en": "Manwath"
+      },
+      {
+        "id": "4120",
+        "name": "पाथ्री",
+        "en": "Pathri"
+      },
+      {
+        "id": "4121",
+        "name": "सोनपेठ",
+        "en": "Sonpeth"
+      },
+      {
+        "id": "4122",
+        "name": "गंगाखेड",
+        "en": "Gangakhed"
+      },
+      {
+        "id": "4123",
+        "name": "पालम",
+        "en": "Palam"
+      },
+      {
+        "id": "4124",
+        "name": "पुर्णा",
+        "en": "Purna"
+      }
+    ]
+  },
+  {
+    "id": "490",
+    "name": "पुणे",
+    "en": "Pune",
+    "talukas": [
+      {
+        "id": "4187",
+        "name": "जुन्नर",
+        "en": "Junnar"
+      },
+      {
+        "id": "4188",
+        "name": "आंबेगाव",
+        "en": "Ambegaon"
+      },
+      {
+        "id": "4189",
+        "name": "शिरूर",
+        "en": "Shirur"
+      },
+      {
+        "id": "4190",
+        "name": "खेड",
+        "en": "Khed"
+      },
+      {
+        "id": "4191",
+        "name": "मावळ",
+        "en": "Mawal"
+      },
+      {
+        "id": "4192",
+        "name": "मुळशी",
+        "en": "Mulshi"
+      },
+      {
+        "id": "4193",
+        "name": "हवेली",
+        "en": "Haveli"
+      },
+      {
+        "id": "4194",
+        "name": "पुणे शहर",
+        "en": "Pune City"
+      },
+      {
+        "id": "4195",
+        "name": "दौंड",
+        "en": "Daund"
+      },
+      {
+        "id": "4196",
+        "name": "पुरंदर",
+        "en": "Purandhar"
+      },
+      {
+        "id": "4197",
+        "name": "वेल्हे",
+        "en": "Velhe"
+      },
+      {
+        "id": "4198",
+        "name": "भोर",
+        "en": "Bhor"
+      },
+      {
+        "id": "4199",
+        "name": "बारामती",
+        "en": "Baramati"
+      },
+      {
+        "id": "4200",
+        "name": "इंदापूर",
+        "en": "Indapur"
+      }
+    ]
+  },
+  {
+    "id": "491",
+    "name": "रायगड",
+    "en": "Raigad",
+    "talukas": [
+      {
+        "id": "4172",
+        "name": "उरण",
+        "en": "Uran"
+      },
+      {
+        "id": "4173",
+        "name": "पनवेल",
+        "en": "Panvel"
+      },
+      {
+        "id": "4174",
+        "name": "कर्जत",
+        "en": "Karjat"
+      },
+      {
+        "id": "4175",
+        "name": "खालापूर",
+        "en": "Khalapur"
+      },
+      {
+        "id": "4176",
+        "name": "पेण",
+        "en": "Pen"
+      },
+      {
+        "id": "4177",
+        "name": "अलिबाग",
+        "en": "Alibag"
+      },
+      {
+        "id": "4178",
+        "name": "मुरूड",
+        "en": "Murud"
+      },
+      {
+        "id": "4179",
+        "name": "रोहा",
+        "en": "Roha"
+      },
+      {
+        "id": "4180",
+        "name": "सुधागड",
+        "en": "Sudhagad"
+      },
+      {
+        "id": "4181",
+        "name": "मानगाव",
+        "en": "Mangaon"
+      },
+      {
+        "id": "4182",
+        "name": "तळा",
+        "en": "Tala"
+      },
+      {
+        "id": "4183",
+        "name": "श्रीवर्धन",
+        "en": "Shrivardhan"
+      },
+      {
+        "id": "4184",
+        "name": "म्हासळा",
+        "en": "Mhasla"
+      },
+      {
+        "id": "4185",
+        "name": "महाड",
+        "en": "Mahad"
+      },
+      {
+        "id": "4186",
+        "name": "पोलादपूर",
+        "en": "Poladpur"
+      }
+    ]
+  },
+  {
+    "id": "492",
+    "name": "रत्नागिरी",
+    "en": "Ratnagiri",
+    "talukas": [
+      {
+        "id": "4266",
+        "name": "मंडणगड",
+        "en": "Mandangad"
+      },
+      {
+        "id": "4267",
+        "name": "दापोली",
+        "en": "Dapoli"
+      },
+      {
+        "id": "4268",
+        "name": "खेड",
+        "en": "Khed"
+      },
+      {
+        "id": "4269",
+        "name": "चिपळूण",
+        "en": "Chiplun"
+      },
+      {
+        "id": "4270",
+        "name": "गुहाघर",
+        "en": "Guhagar"
+      },
+      {
+        "id": "4271",
+        "name": "रत्नागिरी",
+        "en": "Ratnagiri"
+      },
+      {
+        "id": "4272",
+        "name": "संगमेश्वर",
+        "en": "Sangameshwar"
+      },
+      {
+        "id": "4273",
+        "name": "लांजा",
+        "en": "Lanja"
+      },
+      {
+        "id": "4274",
+        "name": "राजापूर",
+        "en": "Rajapur"
+      }
+    ]
+  },
+  {
+    "id": "493",
+    "name": "सांगली",
+    "en": "Sangli",
+    "talukas": [
+      {
+        "id": "4295",
+        "name": "शिराळा",
+        "en": "Shirala"
+      },
+      {
+        "id": "4296",
+        "name": "वाळवा",
+        "en": "Walwa"
+      },
+      {
+        "id": "4297",
+        "name": "पलुस",
+        "en": "Palus"
+      },
+      {
+        "id": "4298",
+        "name": "कडेगाव",
+        "en": "Kadegaon"
+      },
+      {
+        "id": "4299",
+        "name": "खानापूर",
+        "en": "Khanapur"
+      },
+      {
+        "id": "4300",
+        "name": "आटपाडी",
+        "en": "Atpadi"
+      },
+      {
+        "id": "4301",
+        "name": "तासगाव",
+        "en": "Tasgaon"
+      },
+      {
+        "id": "4302",
+        "name": "मिरज",
+        "en": "Miraj"
+      },
+      {
+        "id": "4303",
+        "name": "कवठेमहांकाळ",
+        "en": "Kavathemahankal"
+      },
+      {
+        "id": "4304",
+        "name": "जत",
+        "en": "Jat"
+      }
+    ]
+  },
+  {
+    "id": "494",
+    "name": "सातारा",
+    "en": "Satara",
+    "talukas": [
+      {
+        "id": "4255",
+        "name": "महाबळेश्वर",
+        "en": "Mahabaleshwar"
+      },
+      {
+        "id": "4256",
+        "name": "वाई",
+        "en": "Wai"
+      },
+      {
+        "id": "4257",
+        "name": "खंडाळा",
+        "en": "Khandala"
+      },
+      {
+        "id": "4258",
+        "name": "फलटण",
+        "en": "Phaltan"
+      },
+      {
+        "id": "4259",
+        "name": "माण",
+        "en": "Man"
+      },
+      {
+        "id": "4260",
+        "name": "खटाव",
+        "en": "Khatav"
+      },
+      {
+        "id": "4261",
+        "name": "कोरेगाव",
+        "en": "Koregaon"
+      },
+      {
+        "id": "4262",
+        "name": "सातारा",
+        "en": "Satara"
+      },
+      {
+        "id": "4263",
+        "name": "जावळी",
+        "en": "Jaoli"
+      },
+      {
+        "id": "4264",
+        "name": "पाटण",
+        "en": "Patan"
+      },
+      {
+        "id": "4265",
+        "name": "कराड",
+        "en": "Karad"
+      }
+    ]
+  },
+  {
+    "id": "495",
+    "name": "सिंधुदुर्ग",
+    "en": "Sindhudurg",
+    "talukas": [
+      {
+        "id": "4275",
+        "name": "देवगड",
+        "en": "Devgad"
+      },
+      {
+        "id": "4276",
+        "name": "वैभववाडी",
+        "en": "Vaibhavvadi"
+      },
+      {
+        "id": "4277",
+        "name": "कणकवली",
+        "en": "Kankavli"
+      },
+      {
+        "id": "4278",
+        "name": "मालवण",
+        "en": "Malwan"
+      },
+      {
+        "id": "4279",
+        "name": "वेंगुर्ला",
+        "en": "Vengurla"
+      },
+      {
+        "id": "4280",
+        "name": "कुडाळ",
+        "en": "Kudal"
+      },
+      {
+        "id": "4281",
+        "name": "सावंतवाडी",
+        "en": "Sawantwadi"
+      },
+      {
+        "id": "4282",
+        "name": "दोडामार्ग",
+        "en": "Dodamarg"
+      }
+    ]
+  },
+  {
+    "id": "496",
+    "name": "सोलापूर",
+    "en": "Solapur",
+    "talukas": [
+      {
+        "id": "4244",
+        "name": "करमाळा",
+        "en": "Karmala"
+      },
+      {
+        "id": "4245",
+        "name": "माढा",
+        "en": "Madha"
+      },
+      {
+        "id": "4246",
+        "name": "बार्शी",
+        "en": "Barshi"
+      },
+      {
+        "id": "4247",
+        "name": "उत्तर सोलापूर",
+        "en": "Solapur North"
+      },
+      {
+        "id": "4248",
+        "name": "मोहोळ",
+        "en": "Mohol"
+      },
+      {
+        "id": "4249",
+        "name": "पंढरपूर",
+        "en": "Pandharpur"
+      },
+      {
+        "id": "4250",
+        "name": "माळशिरस",
+        "en": "Malshiras"
+      },
+      {
+        "id": "4251",
+        "name": "सांगोले",
+        "en": "Sangole"
+      },
+      {
+        "id": "4252",
+        "name": "मंगळवेढे",
+        "en": "Mangalvedhe"
+      },
+      {
+        "id": "4253",
+        "name": "दक्षिण सोलापूर",
+        "en": "Solapur South"
+      },
+      {
+        "id": "4254",
+        "name": "अक्कलकोट",
+        "en": "Akkalkot"
+      }
+    ]
+  },
+  {
+    "id": "497",
+    "name": "ठाणे",
+    "en": "Thane",
+    "talukas": [
+      {
+        "id": "4165",
+        "name": "ठाणे",
+        "en": "Thane"
+      },
+      {
+        "id": "4166",
+        "name": "भिवंडी",
+        "en": "Bhiwandi"
+      },
+      {
+        "id": "4167",
+        "name": "शहापूर",
+        "en": "Shahapur"
+      },
+      {
+        "id": "4168",
+        "name": "कल्याण",
+        "en": "Kalyan"
+      },
+      {
+        "id": "4169",
+        "name": "उल्हासनगर",
+        "en": "Ulhasnagar"
+      },
+      {
+        "id": "4170",
+        "name": "अंबरनाथ",
+        "en": "Ambarnath"
+      },
+      {
+        "id": "4171",
+        "name": "मुरबाड",
+        "en": "Murbad"
+      }
+    ]
+  },
+  {
+    "id": "498",
+    "name": "वर्धा",
+    "en": "Wardha",
+    "talukas": [
+      {
+        "id": "4015",
+        "name": "आष्टी",
+        "en": "Ashti"
+      },
+      {
+        "id": "4016",
+        "name": "कारंजा",
+        "en": "Karanja"
+      },
+      {
+        "id": "4017",
+        "name": "आर्वी",
+        "en": "Arvi"
+      },
+      {
+        "id": "4018",
+        "name": "सेलू",
+        "en": "Seloo"
+      },
+      {
+        "id": "4019",
+        "name": "वर्धा",
+        "en": "Wardha"
+      },
+      {
+        "id": "4020",
+        "name": "देवळी",
+        "en": "Deoli"
+      },
+      {
+        "id": "4021",
+        "name": "हिंगणघाट",
+        "en": "Hinganghat"
+      },
+      {
+        "id": "4022",
+        "name": "समुद्रपूर",
+        "en": "Samudrapur"
+      }
+    ]
+  },
+  {
+    "id": "499",
+    "name": "वाशिम",
+    "en": "Washim",
+    "talukas": [
+      {
+        "id": "3995",
+        "name": "मालेगाव",
+        "en": "Malegaon"
+      },
+      {
+        "id": "3996",
+        "name": "मंगरूळपीर",
+        "en": "Mangrulpir"
+      },
+      {
+        "id": "3997",
+        "name": "कारंजा",
+        "en": "Karanja"
+      },
+      {
+        "id": "3998",
+        "name": "मानोरा",
+        "en": "Manora"
+      },
+      {
+        "id": "3999",
+        "name": "वाशिम",
+        "en": "Washim"
+      },
+      {
+        "id": "4000",
+        "name": "रिसोड",
+        "en": "Risod"
+      }
+    ]
+  },
+  {
+    "id": "500",
+    "name": "यवतमाळ",
+    "en": "Yavatmal",
+    "talukas": [
+      {
+        "id": "4079",
+        "name": "नेर",
+        "en": "Ner"
+      },
+      {
+        "id": "4080",
+        "name": "बाबूलगाव",
+        "en": "Babulgaon"
+      },
+      {
+        "id": "4081",
+        "name": "कळंब",
+        "en": "Kalamb"
+      },
+      {
+        "id": "4082",
+        "name": "यवतमाळ",
+        "en": "Yavatmal"
+      },
+      {
+        "id": "4083",
+        "name": "धारवा",
+        "en": "Darwha"
+      },
+      {
+        "id": "4084",
+        "name": "दिग्रस",
+        "en": "Digras"
+      },
+      {
+        "id": "4085",
+        "name": "पूसद",
+        "en": "Pusad"
+      },
+      {
+        "id": "4086",
+        "name": "उमरखेड",
+        "en": "Umarkhed"
+      },
+      {
+        "id": "4087",
+        "name": "महागाव",
+        "en": "Mahagaon"
+      },
+      {
+        "id": "4088",
+        "name": "अर्नी",
+        "en": "Arni"
+      },
+      {
+        "id": "4089",
+        "name": "घाटंजी",
+        "en": "Ghatanji"
+      },
+      {
+        "id": "4090",
+        "name": "केलापूर",
+        "en": "Kelapur"
+      },
+      {
+        "id": "4091",
+        "name": "राळेगाव",
+        "en": "Ralegaon"
+      },
+      {
+        "id": "4092",
+        "name": "मारेगाव",
+        "en": "Maregaon"
+      },
+      {
+        "id": "4093",
+        "name": "जरी जामनी",
+        "en": "Zari-Jamani"
+      },
+      {
+        "id": "4094",
+        "name": "वनी",
+        "en": "Wani"
+      }
+    ]
+  },
+  {
+    "id": "665",
+    "name": "पालघर",
+    "en": "Palghar",
+    "talukas": [
+      {
+        "id": "4157",
+        "name": "तलासरी",
+        "en": "Talasari"
+      },
+      {
+        "id": "4158",
+        "name": "डहाणू",
+        "en": "Dahanu"
+      },
+      {
+        "id": "4159",
+        "name": "विक्रमगड",
+        "en": "Vikramgad"
+      },
+      {
+        "id": "4160",
+        "name": "जव्हार",
+        "en": "Jawhar"
+      },
+      {
+        "id": "4161",
+        "name": "मोखाडा",
+        "en": "Mokhada"
+      },
+      {
+        "id": "4162",
+        "name": "वाडा",
+        "en": "Wada"
+      },
+      {
+        "id": "4163",
+        "name": "पालघर",
+        "en": "Palghar"
+      },
+      {
+        "id": "4164",
+        "name": "वसई",
+        "en": "Vasai"
+      }
+    ]
+  }
+]

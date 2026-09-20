@@ -1,0 +1,62 @@
+import { StyleSheet } from "react-native";
+import { colors } from "../shared/ui";
+
+export const styles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: colors.cream },
+  shell: { flex: 1, width: "100%", maxWidth: 720, alignSelf: "center" },
+  header: {
+    paddingHorizontal: 20,
+    paddingVertical: 13,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderColor: colors.line,
+    gap: 8,
+  },
+  logo: {
+    width: 46,
+    height: 46,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colors.green,
+  },
+  brand: { fontSize: 23, fontWeight: "900", color: colors.green },
+  language: { padding: 10, backgroundColor: colors.pale, borderRadius: 10 },
+  languageText: { color: colors.green, fontSize: 13, fontWeight: "700" },
+  content: { padding: 20, paddingBottom: 35, gap: 18 },
+  nav: {
+    flexDirection: "row",
+    borderTopWidth: 1,
+    borderColor: colors.line,
+    backgroundColor: colors.white,
+    paddingVertical: 10,
+  },
+  navItem: { flex: 1, alignItems: "center", gap: 4, minHeight: 50 },
+  navIcon: { fontSize: 25, color: colors.muted },
+  navLabel: {
+    fontSize: 10,
+    color: colors.muted,
+    textAlign: "center",
+    lineHeight: 18,
+  },
+  busy: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: "#173B2B55",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  scrim: {
+    flex: 1,
+    backgroundColor: "#173B2B88",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+  },
+  dialog: { width: "100%", maxWidth: 430 },
+});

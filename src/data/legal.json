@@ -1,0 +1,50 @@
+{
+  "mr": {
+    "privacy": [
+      ["कोणती माहिती घेतो", "Google खात्याचा ईमेल आणि ओळख क्रमांक, तुमचे नाव, संमती, जाहिराती, फोटो, गाव/जिल्हा/तालुका, संपर्क क्रमांक, तक्रारी आणि ब्लॉक नोंदी वापरतो. Aadhaar, पेमेंट, GPS किंवा फोनबुक घेत नाही."],
+      ["माहितीचा वापर", "खाते चालवणे, जाहिरात दाखवणे, संपर्क जोडणे आणि गैरवापर तपासणे यासाठी माहिती वापरतो. नाव, जाहिराती, फोटो आणि दिलेले ठिकाण सार्वजनिक असतात. संमती दिलेला फोन/WhatsApp क्रमांक लॉगिन केलेल्या वापरकर्त्यांना मिळतो. फोटोमध्ये खासगी माहिती टाकू नका."],
+      ["सेवा पुरवठादार", "Supabase वर खाते, डेटाबेस आणि फोटो ठेवतो. Google लॉगिन पुरवते. फोन किंवा WhatsApp उघडल्यानंतर त्या सेवांचे नियम लागू होतात. जाहिरात सेवा किंवा ट्रॅकिंग SDK वापरत नाही."],
+      ["साठवण आणि हटवणे", "खाते अस्तित्वात असेपर्यंत संबंधित माहिती ठेवतो. खाते हटवल्यावर कार्यरत प्रणालीतून जाहिराती, फोटो, संपर्क आणि संबंधित तक्रार/ब्लॉक नोंदी हटवतो. सेवा पुरवठादाराच्या बॅकअप प्रती त्यांच्या साठवण कालावधीनुसार कालबाह्य होऊ शकतात. फोनवरील मसुदा लॉगआउट किंवा खाते हटवताना साफ होतो."],
+      ["तुमचे पर्याय", "जाहिरात बदलू किंवा हटवू शकता. खाते पानावर खाते हटवू शकता किंवा सार्वजनिक मदत पानावरून विनंती करू शकता. ओळख पुष्टीसाठी Google ईमेल वापरतो; Aadhaar पाठवू नका."]
+    ],
+    "terms": [
+      ["स्थानिक संपर्क सेवा", "गाव बाजार फक्त खरेदीदार-विक्रेत्यांना संपर्क साधू देते. पैसे, मालाची तपासणी, वाहतूक किंवा व्यवहाराची हमी देत नाही. वापरकर्ते १८ वर्षांवरील असावेत."],
+      ["जाहिरात देण्याचे नियम", "फक्त तुमच्या मालकीच्या किंवा विक्रीची परवानगी असलेल्या वस्तूंची खरी माहिती द्या. फोटो वापरण्याचा अधिकार तुमच्याकडे हवा. जमीन/घराचे हक्क आणि जनावरांच्या विक्री/वाहतुकीसाठी लागू नियम स्वतः तपासा."],
+      ["प्रतिबंधित मजकूर आणि वस्तू", "बेकायदेशीर माल, शस्त्रे, अंमली पदार्थ, अश्लील साहित्य, वन्यजीव, चोरीचा माल, फसवणूक, द्वेष, छळ आणि वैयक्तिक माहितीचा गैरवापर निषिद्ध आहे. सार्वजनिक शीर्षक/माहितीत संपर्क क्रमांक किंवा बाह्य लिंक देऊ नका. औषधे, कीटकनाशके आणि नियंत्रित वस्तू या MVP मध्ये स्वीकारत नाही."],
+      ["तपासणी आणि तक्रार", "स्वयंचलित तपासणी चुकू शकते. Google ईमेल सत्यापित म्हणजे व्यक्तीची ओळख, फोन किंवा मालकी सत्यापित नाही. आक्षेपार्ह जाहिरात/विक्रेत्याची तक्रार करा किंवा ब्लॉक करा. प्रशासक जाहिरात काढू किंवा खाते निलंबित करू शकतो."],
+      ["संपर्काची संमती", "जाहिरात प्रकाशित करताना दिलेला फोन आणि WhatsApp क्रमांक लॉगिन केलेल्या खरेदीदारांना दाखवण्याची परवानगी देता. जाहिरात हटवल्यावर नवीन संपर्क प्रवेश बंद होतो; आधी मिळालेल्या प्रती परत घेता येत नाहीत."]
+    ]
+  },
+  "hi": {
+    "privacy": [
+      ["कौन सी जानकारी लेते हैं", "Google खाते का ईमेल और पहचान क्रमांक, आपका नाम, सहमति, विज्ञापन, फोटो, गाँव/जिला/तहसील, संपर्क नंबर, शिकायतें और ब्लॉक रिकॉर्ड इस्तेमाल करते हैं। Aadhaar, भुगतान, GPS या फोनबुक नहीं लेते।"],
+      ["जानकारी का उपयोग", "खाता चलाने, विज्ञापन दिखाने, संपर्क जोड़ने और दुरुपयोग जाँचने के लिए जानकारी इस्तेमाल करते हैं। नाम, विज्ञापन, फोटो और दिया स्थान सार्वजनिक हैं। सहमति वाला फोन/WhatsApp नंबर लॉगिन किए उपयोगकर्ताओं को मिलता है। फोटो में निजी जानकारी न डालें।"],
+      ["सेवा प्रदाता", "Supabase पर खाता, डेटाबेस और फोटो रखते हैं। Google लॉगिन देता है। फोन या WhatsApp खुलने पर उन सेवाओं की शर्तें लागू होती हैं। विज्ञापन या ट्रैकिंग SDK इस्तेमाल नहीं करते।"],
+      ["रखना और हटाना", "खाता रहने तक संबंधित जानकारी रखते हैं। खाता हटने पर चालू प्रणाली से विज्ञापन, फोटो, संपर्क और संबंधित शिकायत/ब्लॉक रिकॉर्ड हटाते हैं। सेवा प्रदाता के बैकअप उनकी अवधि के अनुसार समाप्त हो सकते हैं। फोन का मसौदा लॉगआउट या खाता हटाते समय साफ होता है।"],
+      ["आपके विकल्प", "विज्ञापन बदल या हटा सकते हैं। खाता पेज से खाता हटाएँ या सार्वजनिक सहायता पेज से अनुरोध करें। पहचान पुष्टि के लिए Google ईमेल इस्तेमाल करते हैं; Aadhaar न भेजें।"]
+    ],
+    "terms": [
+      ["स्थानीय संपर्क सेवा", "गाँव बाजार खरीदारों और विक्रेताओं को संपर्क करने देता है। भुगतान, सामान की जाँच, परिवहन या सौदे की गारंटी नहीं देता। उपयोगकर्ता १८ वर्ष से अधिक हों।"],
+      ["विज्ञापन के नियम", "सिर्फ अपने या बिक्री की अनुमति वाले सामान की सही जानकारी दें। फोटो इस्तेमाल करने का अधिकार आपके पास हो। जमीन/घर का स्वामित्व और पशुओं की बिक्री/परिवहन के लागू नियम खुद जाँचें।"],
+      ["प्रतिबंधित सामग्री", "गैरकानूनी सामान, हथियार, नशीले पदार्थ, अश्लील सामग्री, वन्यजीव, चोरी का सामान, धोखाधड़ी, नफरत, उत्पीड़न और निजी जानकारी का दुरुपयोग मना है। सार्वजनिक शीर्षक/जानकारी में संपर्क नंबर या बाहरी लिंक न दें। दवाएँ, कीटनाशक और नियंत्रित सामान इस MVP में स्वीकार नहीं हैं।"],
+      ["जाँच और शिकायत", "स्वचालित जाँच चूक सकती है। Google ईमेल सत्यापित होने का मतलब पहचान, फोन या स्वामित्व सत्यापित होना नहीं है। आपत्तिजनक विज्ञापन/विक्रेता की शिकायत या ब्लॉक करें। व्यवस्थापक विज्ञापन हटा या खाता निलंबित कर सकता है।"],
+      ["संपर्क की सहमति", "विज्ञापन प्रकाशित करते समय दिए फोन और WhatsApp नंबर लॉगिन किए खरीदारों को दिखाने की अनुमति देते हैं। विज्ञापन हटने पर नया संपर्क प्रवेश बंद होता है; पहले ली गई प्रतियाँ वापस नहीं ली जा सकतीं।"]
+    ]
+  },
+  "en": {
+    "privacy": [
+      ["Information we collect", "We use your Google account email and identifier, name, consent, listings, photos, village/district/taluka, contact numbers, reports, and block records. We do not collect Aadhaar, payments, GPS, or contacts."],
+      ["How we use information", "We use information to operate accounts, display listings, connect buyers and sellers, and investigate abuse. Names, listings, photos, and submitted locations are public. Phone and WhatsApp numbers shared with consent are available to signed-in users. Do not include private information in photos."],
+      ["Service providers", "Supabase stores accounts, database records, and photos. Google provides sign-in. Phone and WhatsApp terms apply after those services open. We do not use advertising or tracking SDKs."],
+      ["Retention and deletion", "We keep related information while your account exists. Account deletion removes listings, photos, contacts, and related report/block records from active systems. Provider backup copies may expire under their retention schedules. On-device drafts are cleared when you sign out or delete your account."],
+      ["Your choices", "You can edit or delete listings. Delete your account from the account page or request deletion through the public support page. We use your Google email to confirm the request; do not send Aadhaar."]
+    ],
+    "terms": [
+      ["Local contact service", "Gaav Bajar only helps buyers and sellers connect. It does not handle payment, inspect goods, arrange transport, or guarantee a transaction. Users must be 18 or older."],
+      ["Listing rules", "Provide accurate information only for items you own or are allowed to sell. You must have the right to use uploaded photos. Check applicable ownership, land/property, livestock sale, and transport rules yourself."],
+      ["Prohibited content and goods", "Illegal goods, weapons, drugs, explicit content, wildlife, stolen goods, fraud, hate, harassment, and misuse of personal information are prohibited. Do not put phone numbers or external links in public titles or descriptions. Medicines, pesticides, and controlled goods are not accepted in this MVP."],
+      ["Review and reports", "Automated checks may miss problems. Google email verified does not mean identity, phone, or ownership is verified. Report or block inappropriate listings and sellers. Administrators may remove listings or suspend accounts."],
+      ["Contact consent", "When publishing, you allow signed-in buyers to view the submitted phone and WhatsApp numbers. Deleting a listing stops new contact access; copies already obtained cannot be recalled."]
+    ]
+  }
+}
