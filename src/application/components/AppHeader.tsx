@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import { Language } from "../../core/marketplace/domain";
 import { T, s } from "../../shared/ui";
 import { styles } from "../styles";
@@ -6,23 +6,32 @@ import { styles } from "../styles";
 export function AppHeader({
   t,
   language,
+  onHome,
   onLanguageChange,
 }: {
   t: T;
   language: Language;
+  onHome: () => void;
   onLanguageChange: () => void;
 }) {
   return (
     <View style={styles.header}>
-      <View style={s.row}>
-        <View style={styles.logo}>
-          <Text style={{ fontSize: 25 }}>🌾</Text>
-        </View>
+      <Pressable
+        style={s.row}
+        accessibilityRole="button"
+        accessibilityLabel={`${t("brand")} — ${t("buy")}`}
+        onPress={onHome}
+      >
+        <Image
+          source={require("../../../assets/icon.png")}
+          style={styles.logo}
+          accessibilityLabel={t("brand")}
+        />
         <View>
           <Text style={styles.brand}>{t("brand")}</Text>
           <Text style={s.small}>{t("tagline")}</Text>
         </View>
-      </View>
+      </Pressable>
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="मराठी / हिन्दी / English"

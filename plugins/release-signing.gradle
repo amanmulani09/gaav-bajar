@@ -1,0 +1,21 @@
+// Gaav Bajar release signing guard
+gradle.taskGraph.whenReady { graph ->
+    def buildsRelease = graph.allTasks.any {
+        it.project == project && it.name ==~ /(?i)(assemble|bundle|package|install|validateSigning).*Release/
+    }
+    if (buildsRelease) {
+        def signing = android.buildTypes.release.signingConfig
+        if (signing == null || !signing.isSigningReady()) {
+            throw new GradleException("Release signing credentials are required. Configure production signing through EAS before building.")
+        }
+        def store = java.security.KeyStore.getInstance(java.security.KeyStore.getDefaultType())
+        signing.storeFile.withInputStream { stream ->
+            store.load(stream, signing.storePassword.toCharArray())
+        }
+        def certificate = store.getCertificate(signing.keyAlias)
+        if (certificate == null || signing.keyAlias == "androiddebugkey" ||
+            certificate.subjectX500Principal.name.toLowerCase().contains("cn=android debug")) {
+            throw new GradleException("Release builds must not use an Android debug certificate. Configure production signing through EAS.")
+        }
+    }
+}

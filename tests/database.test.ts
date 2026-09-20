@@ -67,6 +67,8 @@ beforeAll(async () => {
       "utf8",
     ),
   );
+  await db.exec(readFileSync("supabase/migrations/202609200005_contact_limits.sql", "utf8"));
+  await db.exec(readFileSync("supabase/migrations/202609200006_image_upload_limits.sql", "utf8"));
   await db.query(
     "insert into public.influencer_codes(code,label) values($1,$2)",
     ["FARM_01", "Test influencer"],
@@ -218,6 +220,30 @@ describe.sequential("database authorization and lifecycle", () => {
       db.query("select * from public.private_contacts"),
     ).rejects.toThrow("permission denied");
   });
+  it("limits new contact reveals, allows repeats and owners, and restores expired capacity", async () => {
+    await admin();
+    await db.query("delete from public.contact_reveals where viewer_id=$1", [buyer]);
+    const ids = Array.from({ length: 21 }, (_, i) => `cccccccc-cccc-4ccc-8ccc-${String(i).padStart(12, "0")}`);
+    for (const id of ids) {
+      await db.query("insert into public.listings(id,owner_id,seller_name,status) values($1,$2,'Seller','active')", [id, seller]);
+      await db.query("insert into public.private_contacts(listing_id,phone) values($1,$2)", [id, payload.phone]);
+    }
+    await asUser(buyer);
+    for (const id of ids.slice(0, 20)) await db.query("select public.get_contact($1)", [id]);
+    await expect(db.query("select public.get_contact($1)", [ids[20]])).rejects.toThrow("contactLimit");
+    expect((await db.query("select * from public.get_contact($1)", [ids[0]])).rows).toHaveLength(1);
+    await expect(db.query("select * from public.contact_reveals")).rejects.toThrow("permission denied");
+    await expect(db.query("delete from public.contact_reveals")).rejects.toThrow("permission denied");
+    await admin();
+    await db.query("update public.contact_reveals set revealed_at=now()-interval '25 hours' where viewer_id=$1 and listing_id=$2", [buyer, ids[0]]);
+    await asUser(buyer);
+    expect((await db.query("select * from public.get_contact($1)", [ids[20]])).rows).toHaveLength(1);
+    await asUser(seller);
+    for (const id of ids) await db.query("select public.get_contact($1)", [id]);
+    await admin();
+    expect((await db.query("select * from public.contact_reveals where viewer_id=$1", [seller])).rows).toHaveLength(0);
+    await db.query("delete from public.listings where id=any($1::uuid[])", [ids]);
+  });
   it("validates contact consent and location on server", async () => {
     await asUser(seller);
     await expect(publish(item, { consent: false })).rejects.toThrow(
@@ -282,6 +308,30 @@ describe.sequential("database authorization and lifecycle", () => {
     await expect(db.query("select * from public.reports")).rejects.toThrow(
       "permission denied",
     );
+  });
+  it("accepts image MIME types through 10 MiB and rejects larger or non-image objects", async () => {
+    await admin();
+    expect((await db.query("select file_size_limit,allowed_mime_types,public from storage.buckets where id='listing-photos'")).rows).toEqual([
+      { file_size_limit: 10485760, allowed_mime_types: ["image/*"], public: false },
+    ]);
+    const path = `${seller}/${item}/dddddddd-dddd-4ddd-8ddd-dddddddddddd.jpg`;
+    await db.query("insert into storage.objects values('dddddddd-dddd-4ddd-8ddd-dddddddddddd','listing-photos',$1,'{}')", [path]);
+    for (const [mimetype, size, valid] of [
+      ["image/png", 10485760, true], ["image/webp", 10485760, true],
+      ["image/heic", 10485760, true], ["image/avif", 10485760, true],
+      ["image/gif", 10485760, true], ["image/svg+xml", 10485760, true],
+      ["image/jpeg", 10485761, false], ["application/pdf", 100, false],
+    ] as const) {
+      await admin();
+      await db.query("update storage.objects set metadata=$1::jsonb where name=$2", [JSON.stringify({ mimetype, size }), path]);
+      await asUser(seller);
+      const save = db.query("select public.save_listing($1,$2::jsonb,$3::text[]) as status", [item, JSON.stringify(payload), [path]]);
+      if (valid) expect((await save).rows).toEqual([{ status: "active" }]);
+      else await expect(save).rejects.toThrow("photoInvalid");
+    }
+    await publish();
+    await admin();
+    await db.query("delete from storage.objects where name=$1", [path]);
   });
   it("denies foreign photo attachment and restricts storage upload paths", async () => {
     await asUser(seller);

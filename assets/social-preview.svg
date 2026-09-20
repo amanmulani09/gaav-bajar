@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F6EE"/>
+  <path d="M0 488 Q300 400 600 488 T1200 488 V630 H0Z" fill="#E5EBDD"/>
+  <path d="M0 566 Q350 470 700 554 T1200 530 V630 H0Z" fill="#214F37"/>
+  <rect x="48" y="42" width="1104" height="546" rx="32" fill="none" stroke="#214F37" stroke-opacity=".16" stroke-width="2"/>
+  <text x="600" y="264" text-anchor="middle" font-family="Devanagari Sangam MN, sans-serif" font-size="80" font-weight="bold" fill="#214F37">गाव बाजार</text>
+  <text x="600" y="313" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" letter-spacing="6" fill="#566B56">GAAV BAJAR</text>
+  <text x="600" y="378" text-anchor="middle" font-family="Devanagari Sangam MN, sans-serif" font-size="37" fill="#214F37">आपल्या माणसांचा बाजार</text>
+  <text x="600" y="438" text-anchor="middle" font-family="Devanagari Sangam MN, sans-serif" font-size="25" fill="#53634F">शेतीची साधने · जनावरे · शेतमाल · जमीन · घरे</text>
+  <text x="600" y="596" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#F7F6EE">gaav-bajar.vercel.app</text>
+</svg>

@@ -1,5 +1,13 @@
 import { Language } from "../marketplace/domain";
 const mr = {
+  shareListing: "जाहिरात शेअर करा",
+  shareWhatsApp: "WhatsApp वर शेअर करा",
+  shareOther: "इतर ॲपवर शेअर करा",
+  copyLink: "लिंक कॉपी करा",
+  linkCopied: "लिंक कॉपी झाली.",
+  shareCopyHint: "खालील लिंक निवडून कॉपी करा.",
+  shareFailed: "शेअर करता आले नाही. खालील लिंक कॉपी करा.",
+
   brand: "गाव बाजार",
   tagline: "आपल्या माणसांचा बाजार",
   maharashtra: "संपूर्ण महाराष्ट्र",
@@ -93,7 +101,9 @@ const mr = {
   listingContactNote:
     "टीप: प्रकाशित केल्यावर या जाहिरातीचा मोबाइल आणि ऐच्छिक WhatsApp क्रमांक लॉगिन केलेल्या खरेदीदारांना दिसेल. विकले म्हणून नोंदवल्यावर किंवा जाहिरात हटवल्यावर नवीन प्रवेश बंद होतो.",
   photos: "फोटो (जास्तीत जास्त ३)",
-  addPhoto: "फोटो जोडा",
+  addPhoto: "गॅलरीतून निवडा",
+  takePhoto: "कॅमेऱ्याने फोटो काढा",
+  cameraPermissionRequired: "फोटो काढण्यासाठी सेटिंग्जमध्ये कॅमेऱ्याची परवानगी द्या किंवा गॅलरीतून फोटो निवडा.",
   remove: "काढा",
   save: "जाहिरात प्रकाशित करा",
   saved: "जाहिरात प्रकाशित झाली.",
@@ -140,7 +150,9 @@ const mr = {
   phoneInvalid: "योग्य १० अंकी भारतीय मोबाइल क्रमांक भरा.",
   consentRequired: "संपर्क क्रमांक दाखवण्यासाठी संमती आवश्यक आहे.",
   photoLimit: "जास्तीत जास्त ३ फोटो जोडा.",
-  photoInvalid: "फोटो लहान JPEG स्वरूपात हवा. दुसरा फोटो निवडा.",
+  photoInvalid: "हा फोटो या डिव्हाइसवर उघडता आला नाही. दुसरा फोटो निवडा.",
+  photoTooLarge: "प्रत्येक फोटो १० MB किंवा त्यापेक्षा लहान असावा.",
+  photoSizeHint: "प्रत्येक फोटो कमाल १० MB. फोटो आपोआप लहान केला जातो.",
   photoPermission: "फोटो निवडण्यासाठी परवानगी आवश्यक आहे.",
   postingLimit:
     "आजची किंवा चालू जाहिरातींची मर्यादा पूर्ण झाली. नंतर प्रयत्न करा.",
@@ -148,6 +160,10 @@ const mr = {
   notFound: "ही जाहिरात उपलब्ध नाही.",
   notEditable: "ही जाहिरात बदलता येत नाही.",
   error: "अडचण आली",
+  unexpectedError: "ही कृती पूर्ण झाली नाही. पुन्हा प्रयत्न करा; अडचण कायम असल्यास मदतीशी संपर्क करा.",
+  storageError: "या ब्राउझरमध्ये मसुदा जतन करता आला नाही. मोकळी जागा आणि साइट डेटा परवानगी तपासा.",
+  contactLimit: "२४ तासांत जास्तीत जास्त २० नवीन जाहिरातींचे संपर्क पाहता येतात. नंतर पुन्हा प्रयत्न करा.",
+  sessionExpired: "लॉगिन कालबाह्य झाले. पुन्हा Google ने लॉगिन करा.",
   networkError: "जोडणी तपासा आणि पुन्हा प्रयत्न करा. बदल जतन झाले नसतील.",
   setup:
     "सेवा अजून सुरू झालेली नाही. कृपया नंतर पुन्हा प्रयत्न करा.",
@@ -165,6 +181,14 @@ const mr = {
   loading: "लोड होत आहे…",
 };
 const hi: Record<keyof typeof mr, string> = {
+  shareListing: "विज्ञापन शेयर करें",
+  shareWhatsApp: "WhatsApp पर शेयर करें",
+  shareOther: "दूसरे ऐप में शेयर करें",
+  copyLink: "लिंक कॉपी करें",
+  linkCopied: "लिंक कॉपी हो गई।",
+  shareCopyHint: "नीचे की लिंक चुनकर कॉपी करें।",
+  shareFailed: "शेयर नहीं हो सका। नीचे की लिंक कॉपी करें।",
+
   brand: "गाँव बाजार",
   tagline: "अपने लोगों का बाजार",
   maharashtra: "पूरा महाराष्ट्र",
@@ -258,7 +282,9 @@ const hi: Record<keyof typeof mr, string> = {
   listingContactNote:
     "नोट: प्रकाशित करने पर इस विज्ञापन का मोबाइल और वैकल्पिक WhatsApp नंबर लॉगिन किए खरीदारों को दिखेगा। बिक गया दर्ज करने या विज्ञापन हटाने पर नया प्रवेश बंद होगा।",
   photos: "फोटो (अधिकतम ३)",
-  addPhoto: "फोटो जोड़ें",
+  addPhoto: "गैलरी से चुनें",
+  takePhoto: "कैमरे से फोटो लें",
+  cameraPermissionRequired: "फोटो लेने के लिए सेटिंग्स में कैमरे की अनुमति दें या गैलरी से फोटो चुनें।",
   remove: "हटाएँ",
   save: "विज्ञापन प्रकाशित करें",
   saved: "विज्ञापन प्रकाशित हुआ।",
@@ -304,7 +330,9 @@ const hi: Record<keyof typeof mr, string> = {
   phoneInvalid: "सही १० अंक का भारतीय मोबाइल नंबर भरें।",
   consentRequired: "संपर्क नंबर दिखाने की सहमति जरूरी है।",
   photoLimit: "अधिकतम ३ फोटो जोड़ें।",
-  photoInvalid: "फोटो छोटा JPEG होना चाहिए। दूसरा फोटो चुनें।",
+  photoInvalid: "यह फोटो इस डिवाइस पर खुल नहीं सका। दूसरा फोटो चुनें।",
+  photoTooLarge: "हर फोटो १० MB या उससे छोटा होना चाहिए।",
+  photoSizeHint: "हर फोटो अधिकतम १० MB। फोटो अपने आप छोटा किया जाता है।",
   photoPermission: "फोटो चुनने की अनुमति जरूरी है।",
   postingLimit:
     "आज के या चालू विज्ञापनों की सीमा पूरी हुई। बाद में प्रयास करें।",
@@ -312,6 +340,10 @@ const hi: Record<keyof typeof mr, string> = {
   notFound: "यह विज्ञापन उपलब्ध नहीं है।",
   notEditable: "यह विज्ञापन बदला नहीं जा सकता।",
   error: "समस्या आई",
+  unexpectedError: "यह काम पूरा नहीं हुआ। फिर प्रयास करें; समस्या बनी रहे तो सहायता से संपर्क करें।",
+  storageError: "इस ब्राउज़र में मसौदा सहेजा नहीं गया। खाली जगह और साइट डेटा अनुमति जाँचें।",
+  contactLimit: "२४ घंटों में अधिकतम २० नए विज्ञापनों के संपर्क देख सकते हैं। बाद में फिर कोशिश करें।",
+  sessionExpired: "लॉगिन समाप्त हो गया। फिर Google से लॉगिन करें।",
   networkError: "कनेक्शन जाँचें और फिर प्रयास करें। बदलाव शायद सहेजे नहीं गए।",
   setup: "सेवा अभी शुरू नहीं हुई है। कृपया बाद में फिर प्रयास करें.",
   confirm: "हाँ, आगे बढ़ें",
@@ -328,6 +360,14 @@ const hi: Record<keyof typeof mr, string> = {
   loading: "लोड हो रहा है…",
 };
 const en: Record<keyof typeof mr, string> = {
+  shareListing: "Share advertisement",
+  shareWhatsApp: "Share on WhatsApp",
+  shareOther: "Share to other apps",
+  copyLink: "Copy link",
+  linkCopied: "Link copied.",
+  shareCopyHint: "Select and copy the link below.",
+  shareFailed: "Could not share. Copy the link below.",
+
   brand: "Gaav Bajar",
   tagline: "Your local marketplace",
   maharashtra: "All Maharashtra",
@@ -417,7 +457,9 @@ const en: Record<keyof typeof mr, string> = {
   listingContactNote:
     "Note: Publishing shows this listing's mobile and optional WhatsApp number to signed-in buyers. New access stops when you mark it sold or delete it.",
   photos: "Photos (up to 3)",
-  addPhoto: "Add photo",
+  addPhoto: "Choose from gallery",
+  takePhoto: "Take photo",
+  cameraPermissionRequired: "Allow camera access in settings to take a photo, or choose one from your gallery.",
   remove: "Remove",
   save: "Publish listing",
   saved: "Listing published.",
@@ -461,13 +503,19 @@ const en: Record<keyof typeof mr, string> = {
   phoneInvalid: "Enter a valid 10-digit Indian mobile number.",
   consentRequired: "Consent is required to show contact details.",
   photoLimit: "Add no more than 3 photos.",
-  photoInvalid: "Photo must be a small JPEG. Choose another photo.",
+  photoInvalid: "This device could not open the image. Choose another photo.",
+  photoTooLarge: "Each image must be 10 MB or smaller.",
+  photoSizeHint: "Up to 10 MB per image. Photos are optimized automatically.",
   photoPermission: "Photo permission is required to choose a photo.",
   postingLimit: "You reached today's or active listing limit. Try later.",
   invalid: "Check the information and try again.",
   notFound: "This listing is unavailable.",
   notEditable: "This listing cannot be edited.",
   error: "Something went wrong",
+  unexpectedError: "This action could not be completed. Try again; contact support if it continues.",
+  storageError: "Could not save this draft in your browser. Check free space and site data permissions.",
+  contactLimit: "You can view contacts for 20 new ads in 24 hours. Try again later.",
+  sessionExpired: "Your sign-in expired. Sign in with Google again.",
   networkError: "Check your connection and try again. Changes may not have been saved.",
   setup: "Service is not live yet. Please try again later.",
   confirm: "Yes, continue",
@@ -493,6 +541,15 @@ export function errorKey(error: unknown): TextKey {
     error instanceof Error
       ? error.message
       : (error as { message?: string })?.message;
-  return message && message in mr ? (message as TextKey) : "networkError";
+  if (message && Object.prototype.hasOwnProperty.call(mr, message))
+    return message as TextKey;
+  const details = error as { name?: string; code?: string; status?: number } | null;
+  if (details?.name === "QuotaExceededError" || details?.name === "SecurityError")
+    return "storageError";
+  if (details?.status === 401 || details?.code === "PGRST301" || details?.code === "refresh_token_not_found")
+    return "sessionExpired";
+  if (details?.name === "AbortError" || /failed to fetch|network request failed|networkerror|load failed|fetch failed|timed? ?out/i.test(message || ""))
+    return "networkError";
+  return "unexpectedError";
 }
 export const dictionaries = { mr, hi, en };

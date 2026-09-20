@@ -4,4 +4,7 @@ node_modules
 !.env.example
 .expo/
 .vercel/
+public/privacy.html
+public/terms.html
+public/delete-account.html
 supabase/.temp/

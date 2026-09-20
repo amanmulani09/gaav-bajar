@@ -3,7 +3,7 @@ const mocks = vi.hoisted(() => ({ createClient: vi.fn(() => ({ auth: {} })), add
 vi.mock("react-native-url-polyfill/auto", () => ({}));
 vi.mock("@supabase/supabase-js", () => ({ createClient: mocks.createClient }));
 vi.mock("react-native", () => ({ Platform: { OS: "android" }, AppState: { addEventListener: mocks.addEventListener } }));
-vi.mock("../src/core/storage/local", () => ({ supabaseStorage: {} }));
+vi.mock("../src/core/storage/auth", () => ({ supabaseStorage: {} }));
 afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); vi.resetModules(); });
 it.each([
   [undefined, undefined],

@@ -29,6 +29,8 @@ npm run build:web      # Static web export to dist/
 
 Web app: https://gaav-bajar.vercel.app. Vercel project: `amanmulani09s-projects/gaav-bajar`.
 
+Security deployment notes and native release gates: [docs/SECURITY_FIXES.md](docs/SECURITY_FIXES.md). Preserve the `headers` and `rewrites` from `vercel.json` when deploying a local static export.
+
 The first deployment uploads a local Expo web export through Vercel CLI; Git auto-deploy is not connected. `vercel.json` configures future source builds and serves `/auth/callback` from the app entry point. Source builds require the public Supabase environment variables at build time. Never upload the Google client secret or Supabase service-role key.
 
 Supabase allows `https://gaav-bajar.vercel.app/auth/callback` alongside the native callback. End-to-end Google sign-in remains a release check; the Google OAuth app is still in testing mode.

@@ -1,3 +1,4 @@
+import type { PhotoSource } from "../../../core/marketplace/photo-picker";
 import type { ReactNode } from "react";
 import { Image } from "expo-image";
 import { Text, View } from "react-native";
@@ -15,7 +16,7 @@ type Props = {
   draft: Draft;
   policyLinks: ReactNode;
   patchDraft: (update: Partial<Draft>) => void;
-  onAddPhoto: () => void;
+  onAddPhoto: (source: PhotoSource) => void;
   onPublish: () => void;
   onDiscard: () => void;
 };
@@ -91,6 +92,7 @@ export function ListingEditorScreen({
         maxLength={80}
       />
       <Text style={s.label}>{t("photos")}</Text>
+      <Text style={s.small}>{t("photoSizeHint")}</Text>
       <View style={listingStyles.photoRow}>
         {draft.photos.map((photo, index) => (
           <View key={photo.path} style={{ width: "30%", gap: 6 }}>
@@ -120,7 +122,13 @@ export function ListingEditorScreen({
         quiet
         disabled={draft.photos.length >= 3}
         label={`＋ ${t("addPhoto")}`}
-        onPress={onAddPhoto}
+        onPress={() => onAddPhoto("gallery")}
+      />
+      <Button
+        quiet
+        disabled={draft.photos.length >= 3}
+        label={t("takePhoto")}
+        onPress={() => onAddPhoto("camera")}
       />
       <Field
         label={t("phone")}

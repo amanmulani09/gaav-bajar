@@ -13,11 +13,12 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Crypto from "expo-crypto";
-import * as ImagePicker from "expo-image-picker";
-import * as ImageManipulator from "expo-image-manipulator";
+import { pickListingPhoto, PhotoSource } from "../core/marketplace/photo-picker";
 import { Session } from "@supabase/supabase-js";
 import { configured, supabase } from "../core/supabase/client";
 import { localStorage } from "../core/storage/local";
+import { prepareListingPhoto } from "../core/marketplace/prepare-photo";
+import { sharedListingId } from "../core/marketplace/sharing";
 import {
   cleanupUnused,
   deleteRemote,
@@ -49,7 +50,6 @@ import { styles } from "./styles";
 import {
   favoriteIdsStorageKey,
   listingPageSize,
-  maxDraftPhotoBytes,
 } from "../features/listings/constants";
 import { BrowseScreen } from "../features/listings/screens/BrowseScreen";
 import { MyListingsScreen } from "../features/listings/screens/MyListingsScreen";
@@ -253,6 +253,10 @@ function Market() {
     const callback = (url: string | null) => {
       if (url && isGoogleCallback(url))
         void finishGoogleLogin(url).catch(fail);
+      else if (url) {
+        const id = sharedListingId(url);
+        if (id) void run(() => openListing({ id }));
+      }
     };
     void Linking.getInitialURL().then(callback).catch(fail);
     const links = Linking.addEventListener("url", ({ url }) => callback(url));
@@ -372,10 +376,7 @@ function Market() {
     );
     setScreen("post");
   }
-  async function openListing(item: Listing) {
-    const currentSession = await requireGoogle();
-    if (!currentSession) return;
-    if (!(await ensureJoined(currentSession))) return;
+  async function openListing(item: Pick<Listing, "id">) {
     const listing = await getListing(item.id);
     if (!listing) throw new Error("notFound");
     setSelected(listing);
@@ -425,38 +426,13 @@ function Market() {
     });
     setScreen("post");
   }
-  async function addPhoto() {
+  async function addPhoto(source: PhotoSource) {
     if (!draft || !userId) return;
     if (draft.photos.length >= 3) throw new Error("photoLimit");
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ["images"],
-      quality: 1,
-    });
+    const result = await pickListingPhoto(source);
     if (result.canceled) return;
     const asset = result.assets[0];
-    const size =
-      asset.width >= asset.height ? { width: 1200 } : { height: 1200 };
-    let photo = await ImageManipulator.manipulateAsync(
-      asset.uri,
-      [{ resize: size }],
-      {
-        compress: 0.65,
-        format: ImageManipulator.SaveFormat.JPEG,
-        base64: true,
-      },
-    );
-    if ((photo.base64?.length || 0) * 0.75 > maxDraftPhotoBytes)
-      photo = await ImageManipulator.manipulateAsync(
-        photo.uri,
-        [{ resize: { width: 800 } }],
-        {
-          compress: 0.4,
-          format: ImageManipulator.SaveFormat.JPEG,
-          base64: true,
-        },
-      );
-    if (!photo.base64 || photo.base64.length * 0.75 > maxDraftPhotoBytes)
-      throw new Error("photoInvalid");
+    const photo = await prepareListingPhoto(asset);
     updateDraft({
       ...draft,
       photos: [
@@ -504,7 +480,9 @@ function Market() {
     });
   }
   async function contact(channel: "call" | "whatsapp") {
-    if (!selected || !requireProfile()) return;
+    if (!selected) return;
+    const currentSession = await requireGoogle();
+    if (!currentSession || !(await ensureJoined(currentSession))) return;
     const rows = await rpc("get_contact", { target: selected.id });
     if (!rows.length) throw new Error("contactUnavailable");
     const contact = rows[0];
@@ -690,6 +668,7 @@ function Market() {
         <AppHeader
           t={t}
           language={language}
+          onHome={() => nav("browse")}
           onLanguageChange={() => {
             const next = language === "mr" ? "hi" : language === "hi" ? "en" : "mr";
             setLanguage(next);
@@ -770,7 +749,7 @@ function Market() {
                 draft={draft}
                 policyLinks={policyLinks}
                 patchDraft={patchDraft}
-                onAddPhoto={() => void run(addPhoto)}
+                onAddPhoto={(source) => void run(() => addPhoto(source))}
                 onPublish={() => void run(publish)}
                 onDiscard={requestDiscard}
               />

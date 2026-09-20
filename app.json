@@ -30,12 +30,14 @@
         "expo-image-picker",
         {
           "photosPermission": "जाहिरातीसाठी फोटो निवडा / विज्ञापन के लिए फोटो चुनें",
-          "cameraPermission": false,
+          "cameraPermission": "जाहिरातीसाठी फोटो काढा / विज्ञापन के लिए फोटो लें",
           "microphonePermission": false
         }
       ],
       "expo-web-browser",
-      "expo-image"
+      "expo-image",
+      "expo-secure-store",
+      "./plugins/withReleaseSigningGuard.cjs"
     ],
     "web": {
       "favicon": "./assets/favicon.png"

@@ -32,6 +32,9 @@ Project: `kzfajcdbnkbchfywgbjz` (`gaav-bajar`), Mumbai region. Setup used the ow
 
 ## Web deployment — 2026-09-20
 
+- Branding update deployed as `dpl_H15raEWyniw9PoHauj7TGFfQPHWt`: header uses the existing custom house-and-leaf logo, favicon source is 256px, and public privacy/terms/account-deletion pages are included in web exports. Web and Android exports passed; 63 tests passed. Live header visually verified.
+- Google Branding now has the production homepage, privacy policy, terms links, and `gaav-bajar.vercel.app` authorized domain. App name is `Gaav Bajar`. Logo upload is blocked by Chrome extension file URL access. Google brand verification/publication is still pending; do not claim the Supabase domain label has been replaced.
+
 - Published the current local Expo web export at https://gaav-bajar.vercel.app through Vercel CLI. Deployment `dpl_8sSHrfPtdioABGM3R2FYiC32CqyZ` is Ready; Git auto-deploy is not connected.
 - `npm run check`: 63 tests passed. Fresh web export succeeded. Exported app rendered and loaded Supabase districts; production home page rendered and `/auth/callback` returned HTTP 200.
 - Google provider and exact production callback are configured. End-to-end Google login and native-device checks remain pending.

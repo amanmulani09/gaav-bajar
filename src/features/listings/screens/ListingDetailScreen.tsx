@@ -5,6 +5,7 @@ import { Button, T, s } from "../../../shared/ui";
 import { listingStyles } from "../styles";
 import { categoryIcons } from "../constants";
 import { listingPrice } from "../components/ListingCard";
+import { ListingShare } from "../components/ListingShare";
 
 type Props = {
   t: T;
@@ -79,6 +80,7 @@ export function ListingDetailScreen({
       />
       <Text style={s.body}>{locationLabel(item)}</Text>
       <Text style={s.body}>{item.description}</Text>
+      {item.status === "active" && <ListingShare key={item.id} item={item} t={t} />}
       <View style={s.card}>
         <Text style={s.small}>{t("seller")}</Text>
         <Text style={s.h2}>{item.seller_name}</Text>
