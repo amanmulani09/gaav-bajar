@@ -2,6 +2,8 @@ import { Category } from "../../core/marketplace/domain";
 
 export const categoryIcons: Record<Category, string> = {
   tractor: "🚜",
+  vehicles: "🚗",
+  household: "🛋",
   equipment: "⚙",
   produce: "🌾",
   livestock: "🐄",

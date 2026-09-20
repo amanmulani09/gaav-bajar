@@ -8,6 +8,8 @@ export const categories = [
   "livestock",
   "land",
   "property",
+  "vehicles",
+  "household",
   "other",
 ] as const;
 export type Category = (typeof categories)[number];

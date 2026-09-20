@@ -69,6 +69,7 @@ beforeAll(async () => {
   );
   await db.exec(readFileSync("supabase/migrations/202609200005_contact_limits.sql", "utf8"));
   await db.exec(readFileSync("supabase/migrations/202609200006_image_upload_limits.sql", "utf8"));
+  await db.exec(readFileSync("supabase/migrations/202609200007_listing_categories.sql", "utf8"));
   await db.query(
     "insert into public.influencer_codes(code,label) values($1,$2)",
     ["FARM_01", "Test influencer"],
@@ -332,6 +333,17 @@ describe.sequential("database authorization and lifecycle", () => {
     await publish();
     await admin();
     await db.query("delete from storage.objects where name=$1", [path]);
+  });
+  it("publishes and filters vehicle and household categories while rejecting unknown categories", async () => {
+    for (const category of ["vehicles", "household"]) {
+      await asUser(seller);
+      await publish(item, { category });
+      await asUser(null);
+      expect((await db.query("select id from public.listings where category=$1", [category])).rows).toEqual([{ id: item }]);
+    }
+    await asUser(seller);
+    await expect(publish(item, { category: "unknown" })).rejects.toThrow("invalid");
+    await publish();
   });
   it("denies foreign photo attachment and restricts storage upload paths", async () => {
     await asUser(seller);
