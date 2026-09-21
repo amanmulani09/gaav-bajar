@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import { Text, View } from "react-native";
-import { Profile } from "../../../core/marketplace/domain";
+import {
+  Profile,
+  hasCurrentConsent,
+} from "../../../core/marketplace/domain";
 import { Button, Check, Field, T, s } from "../../../shared/ui";
 
 type Block = { id: string; name: string };
@@ -50,7 +53,7 @@ export function ProfileScreen({
   onHelp,
   onDeclineConsent,
 }: Props) {
-  const needsConsent = !profile?.data_consent_at;
+  const needsConsent = !hasCurrentConsent(profile);
   return (
     <>
       <Text style={s.h1}>{t("profile")}</Text>

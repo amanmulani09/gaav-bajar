@@ -37,7 +37,7 @@ The frontend talks directly to Supabase through its SDK. There is no separate Ex
 | Camera and gallery | Choose or capture photos, resize/compress JPEGs, enforce the three-photo limit | `photo-picker.ts`, `photos.ts`, `MarketApp.tsx` |
 | Local persistence | MMKV for language/favorites; encrypted native auth store with SecureStore-held key; browser session storage; AsyncStorage for photo drafts | `src/core/storage/local.ts`, `MarketApp.tsx` |
 | Supabase Auth | Google OAuth, app sessions, token refresh | `src/core/supabase/client.ts` |
-| PostgreSQL | Listing/profile data, private contacts, consent, referrals, reports, blocks, and server-side rules | `supabase/migrations/` |
+| PostgreSQL | Listing/profile data, private contacts, private bids, consent, referrals, reports, blocks, and server-side rules | `supabase/migrations/` |
 | Photo storage | Private `listing-photos` bucket; authorized uploads and temporary signed viewing URLs | Supabase Storage policies in migrations |
 | Deletion functions | Validate the caller, hide content, remove photos, then delete the listing or account | `supabase/functions/` |
 | Sharing and previews | Ad text/link sharing, deep-link handling, static app-level Open Graph and Twitter preview | `sharing.ts`, `ListingShare.tsx`, `public/index.html` |
@@ -51,8 +51,8 @@ The frontend talks directly to Supabase through its SDK. There is no separate Ex
 2. The app queries active listings with search, category, district, and taluka filters.
 3. Supabase returns visible listing data. The app requests photo URLs valid for 10 minutes.
 4. A visitor can read public ad details without signing in.
-5. To contact a seller, the user signs in with Google and completes onboarding. The `get_contact` database function checks access and allows up to 20 distinct new ad contacts per buyer over a rolling 24 hours before returning phone/WhatsApp details. Reopening a contact within that window is free; owners are exempt.
-6. The app opens the phone or WhatsApp action. The marketplace does not process payments or fulfil orders.
+5. To contact a seller, a buyer signs in, completes onboarding, and submits a private offer with amount and location. The seller can accept one offer; `get_contact` returns phone/WhatsApp details only to that accepted buyer or the listing owner.
+6. The app opens the phone or WhatsApp action after acceptance. The marketplace does not process payments or fulfil orders.
 
 ### Google login
 
@@ -91,7 +91,8 @@ Privileged deletion credentials remain inside Supabase Edge Functions. They are 
 | User identity and sessions | Supabase Auth; session persisted locally | Authenticated user session |
 | Profiles and consent | PostgreSQL | Self-access and controlled database functions |
 | Advertisements and photo references | PostgreSQL | Public active listings; owner access to their own records; access rules also account for seller visibility |
-| Seller phone and WhatsApp numbers | Separate `private_contacts` table | Returned through `get_contact` after server-side checks |
+| Seller phone and WhatsApp numbers | Separate `private_contacts` table | Returned through `get_contact` only to the listing owner or accepted buyer |
+| Buyer offers and location | Private `bids` table | Returned only through buyer-self and listing-owner RPCs |
 | Product photo files | Supabase Storage | Private bucket with storage policies and signed viewing URLs |
 | Reports, blocks, referrals, posting events | PostgreSQL | Restricted, purpose-specific database functions and permissions |
 | Favorite IDs and language | Browser/device storage | Local to that browser or device |

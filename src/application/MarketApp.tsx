@@ -36,11 +36,17 @@ import {
   saveDraft,
 } from "../core/marketplace/repository";
 import {
+  Bid,
+  BidDraft,
+  currentConsentVersion,
   Draft,
   Language,
   Listing,
   Profile,
+  emptyBidDraft,
   emptyDraft,
+  hasCurrentConsent,
+  validateBid,
   validateDraft,
   whatsappUrl,
 } from "../core/marketplace/domain";
@@ -108,6 +114,9 @@ function Market() {
   const [district, setDistrict] = useState("");
   const [taluka, setTaluka] = useState("");
   const [selected, setSelected] = useState<Listing | null>(null);
+  const [bidDraft, setBidDraft] = useState<BidDraft>(emptyBidDraft);
+  const [bid, setBid] = useState<Bid | null>(null);
+  const [bids, setBids] = useState<Bid[]>([]);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [name, setName] = useState("");
   const [referralCode, setReferralCode] = useState("");
@@ -132,7 +141,7 @@ function Market() {
   const ready = Boolean(
     session &&
       profile?.terms_at &&
-      profile.data_consent_at &&
+      hasCurrentConsent(profile) &&
       !profile.suspended &&
       !profile.deleting,
   );
@@ -211,10 +220,10 @@ function Market() {
       profileData?.display_name || session?.user.user_metadata.full_name || "",
     );
     setTerms(Boolean(profileData?.terms_at));
-    setDataConsent(Boolean(profileData?.data_consent_at));
+    setDataConsent(hasCurrentConsent(profileData));
     if (
       profileData?.terms_at &&
-      profileData.data_consent_at &&
+      hasCurrentConsent(profileData) &&
       !profileData.suspended &&
       !profileData.deleting
     ) {
@@ -284,6 +293,10 @@ function Market() {
     if (userId) void loadProfile().catch(fail);
   }, [userId]);
   useEffect(() => {
+    if (!selected || !ready) return;
+    void loadBidState(selected).catch(fail);
+  }, [selected?.id, ready, userId]);
+  useEffect(() => {
     setRows([]);
     void loadFeed();
   }, [loadFeed]);
@@ -324,7 +337,7 @@ function Market() {
         "",
     );
     setTerms(Boolean(currentProfile?.terms_at));
-    setDataConsent(Boolean(currentProfile?.data_consent_at));
+    setDataConsent(hasCurrentConsent(currentProfile));
     return currentProfile;
   }
   async function ensureJoined(currentSession: Session): Promise<boolean> {
@@ -335,7 +348,7 @@ function Market() {
     if (activeSession.current?.user.id !== currentSession.user.id) return false;
     if (
       !currentProfile?.terms_at ||
-      !currentProfile.data_consent_at ||
+      !hasCurrentConsent(currentProfile) ||
       currentProfile.suspended ||
       currentProfile.deleting
     ) {
@@ -379,11 +392,65 @@ function Market() {
   async function openListing(item: Pick<Listing, "id">) {
     const listing = await getListing(item.id);
     if (!listing) throw new Error("notFound");
+    setBid(null);
+    setBids([]);
+    setBidDraft(emptyBidDraft());
     setSelected(listing);
     setPreviousScreen(
       screen === "mine" ? "mine" : screen === "favorites" ? "favorites" : "browse",
     );
     setScreen("detail");
+  }
+  async function loadBidState(item = selected) {
+    if (!item || !activeSession.current) return;
+    if (item.owner_id === activeSession.current.user.id) {
+      setBids((await rpc("listing_bids", { target: item.id })) as Bid[]);
+      setBid(null);
+      return;
+    }
+    const rows = (await rpc("my_bid", { target: item.id })) as Bid[];
+    const current = rows[0] || null;
+    setBid(current);
+    setBids([]);
+    if (current)
+      setBidDraft({
+        amount: String(current.amount),
+        district_id: current.district_id,
+        taluka_id: current.taluka_id || "",
+        location: current.location,
+        note: current.note || "",
+      });
+  }
+  async function submitBid() {
+    if (!selected) return;
+    const currentSession = await requireGoogle();
+    if (!currentSession || !(await ensureJoined(currentSession))) return;
+    const validation = validateBid(bidDraft);
+    if (validation) throw new Error(validation);
+    await rpc("place_bid", {
+      target: selected.id,
+      offer: Number(bidDraft.amount),
+      district: bidDraft.district_id,
+      taluka: bidDraft.taluka_id || null,
+      place: bidDraft.location,
+      message: bidDraft.note.trim() || null,
+    });
+    await loadBidState(selected);
+    setNotice(t(bid ? "bidUpdated" : "bidSent"));
+  }
+  function decideBid(buyerId: string, approve: boolean) {
+    if (!selected) return;
+    const action = async () => {
+      await rpc("decide_bid", {
+        target: selected.id,
+        bidder: buyerId,
+        approve,
+      });
+      await loadBidState(selected);
+      setNotice(t(approve ? "bidApproved" : "bidDeclined"));
+    };
+    if (approve) setConfirmation({ text: t("acceptBidConfirm"), action });
+    else void run(action);
   }
   async function toggleFavorite(id: string) {
     const currentSession = await requireGoogle();
@@ -579,7 +646,7 @@ function Market() {
       name,
       accept_terms: terms,
       accept_data: dataConsent,
-      consent_version: "onboarding-v1",
+      consent_version: currentConsentVersion,
       consent_language: language,
       referral_code: referralCode.trim() || null,
     });
@@ -761,11 +828,19 @@ function Market() {
                 own={selected.owner_id === userId}
                 signedIn={Boolean(session)}
                 favorite={favoriteIds.includes(selected.id)}
+                bidDraft={bidDraft}
+                bid={bid}
+                bids={bids}
                 onBack={() => setScreen(previousScreen)}
                 onEdit={() => void run(() => editListing(selected))}
                 onMarkSold={requestMarkSold}
                 onDelete={requestDeleteListing}
                 onContact={(channel) => void run(() => contact(channel))}
+                patchBidDraft={(update) =>
+                  setBidDraft((current) => ({ ...current, ...update }))
+                }
+                onSubmitBid={() => void run(submitBid)}
+                onDecideBid={decideBid}
                 onReport={requestReport}
                 onBlock={requestBlock}
                 onToggleFavorite={() =>

@@ -74,7 +74,7 @@ Build profiles explicitly select `development`, `preview`, and `production` EAS 
 
 ## Product and data behavior
 
-- Guests browse and search active listings. Opening a listing, saving a favorite, or entering Sell, Favorites, My listings, or Profile opens Google's account chooser. Signed-in Google users complete name/terms before posting or obtaining consented contact details.
+- Guests browse and search active listings. Buyers sign in and complete name/terms to place an offer with amount and location. A seller must accept one offer before that buyer can view the seller's consented phone/WhatsApp details.
 - Buyers can save up to 100 favorite listings after Google login. Favorite IDs stay on that device; the Favorites screen fetches current active listing data and hides sold, removed, blocked, or suspended listings.
 - New users may enter one optional influencer coupon/referral code while completing their first profile. Server validates the active code and records one immutable attribution. A counted join means Google login plus accepted terms plus saved profile; it does not mean an install, click, purchase, or unique device. Owner creates codes, reviews counts, and pays influencers manually. See [referral operations](docs/REFERRALS.md).
 - First account setup shows a separate, language-matched data and listing notice. User must explicitly accept it or can decline and continue browsing. Server stores user ID, exact notice version/language, and server timestamp once. Listings repeat a short contact-sharing note without asking for consent again. See [consent evidence](docs/CONSENT.md).

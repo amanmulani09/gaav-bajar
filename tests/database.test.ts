@@ -70,6 +70,7 @@ beforeAll(async () => {
   await db.exec(readFileSync("supabase/migrations/202609200005_contact_limits.sql", "utf8"));
   await db.exec(readFileSync("supabase/migrations/202609200006_image_upload_limits.sql", "utf8"));
   await db.exec(readFileSync("supabase/migrations/202609200007_listing_categories.sql", "utf8"));
+  await db.exec(readFileSync("supabase/migrations/202609210001_bids.sql", "utf8"));
   await db.query(
     "insert into public.influencer_codes(code,label) values($1,$2)",
     ["FARM_01", "Test influencer"],
@@ -81,7 +82,7 @@ beforeAll(async () => {
   for (const id of [seller, buyer]) {
     await asUser(id);
     await db.query(
-      "select public.save_profile($1,true,true,'onboarding-v1','mr')",
+      "select public.save_profile($1,true,true,'onboarding-v2','mr')",
       [id === seller ? "शेतकरी नाव" : "खरेदीदार नाव"],
     );
   }
@@ -96,7 +97,7 @@ describe.sequential("database authorization and lifecycle", () => {
     expect(
       (
         await db.query(
-          "select language,notice_text from public.consent_notices where version='onboarding-v1' order by language",
+          "select language,notice_text from public.consent_notices where version='onboarding-v2' order by language",
         )
       ).rows,
     ).toEqual([
@@ -177,15 +178,27 @@ describe.sequential("database authorization and lifecycle", () => {
     await db.query(
       "select public.save_profile('नवीन वापरकर्ता',true,true,'onboarding-v1','hi')",
     );
+    expect((await db.query("select public.member_ok() as ok")).rows).toEqual([
+      { ok: false },
+    ]);
+    await db.query(
+      "select public.save_profile('नवीन वापरकर्ता',true,true,'onboarding-v2','hi')",
+    );
+    expect((await db.query("select public.member_ok() as ok")).rows).toEqual([
+      { ok: true },
+    ]);
     await admin();
     expect(
       (
         await db.query(
-          "select count(*)::integer as count from public.consent_events where user_id=$1",
+          "select version,language from public.consent_events where user_id=$1 order by version",
           [referred],
         )
       ).rows,
-    ).toEqual([{ count: 1 }]);
+    ).toEqual([
+      { version: "onboarding-v1", language: "mr" },
+      { version: "onboarding-v2", language: "hi" },
+    ]);
   });
   it("creates idempotent drafts and publishes validated listings", async () => {
     await asUser(seller);
@@ -208,11 +221,23 @@ describe.sequential("database authorization and lifecycle", () => {
       db.query("select public.get_contact($1)", [item]),
     ).rejects.toThrow("permission denied");
   });
-  it("allows signed-in contact while denying direct table edits", async () => {
+  it("keeps contact hidden until the seller accepts a valid bid", async () => {
     await asUser(buyer);
-    expect(
-      (await db.query("select * from public.get_contact($1)", [item])).rows,
-    ).toEqual([{ phone: payload.phone, whatsapp: null }]);
+    await expect(
+      db.query("select * from public.get_contact($1)", [item]),
+    ).rejects.toThrow("bidNotAccepted");
+    await expect(
+      db.query("select public.place_bid($1,0,$2,$3,'Pune',null)", [item, payload.district_id, payload.taluka_id]),
+    ).rejects.toThrow("bidAmountInvalid");
+    await expect(
+      db.query("select public.place_bid($1,100000,$2,$3,'Pune','Call 9876543210')", [item, payload.district_id, payload.taluka_id]),
+    ).rejects.toThrow("bidNoteInvalid");
+    await db.query("select public.place_bid($1,100000,$2,$3,'Pune','Can inspect this week')", [item, payload.district_id, payload.taluka_id]);
+    expect((await db.query("select amount,status from public.my_bid($1)", [item])).rows)
+      .toEqual([{ amount: "100000.00", status: "pending" }]);
+    await expect(
+      db.query("select public.decide_bid($1,$2,true)", [item, buyer]),
+    ).rejects.toThrow("notFound");
     await expect(publish()).rejects.toThrow("notFound");
     await expect(
       db.query("update public.listings set status='active'"),
@@ -220,30 +245,17 @@ describe.sequential("database authorization and lifecycle", () => {
     await expect(
       db.query("select * from public.private_contacts"),
     ).rejects.toThrow("permission denied");
-  });
-  it("limits new contact reveals, allows repeats and owners, and restores expired capacity", async () => {
-    await admin();
-    await db.query("delete from public.contact_reveals where viewer_id=$1", [buyer]);
-    const ids = Array.from({ length: 21 }, (_, i) => `cccccccc-cccc-4ccc-8ccc-${String(i).padStart(12, "0")}`);
-    for (const id of ids) {
-      await db.query("insert into public.listings(id,owner_id,seller_name,status) values($1,$2,'Seller','active')", [id, seller]);
-      await db.query("insert into public.private_contacts(listing_id,phone) values($1,$2)", [id, payload.phone]);
-    }
-    await asUser(buyer);
-    for (const id of ids.slice(0, 20)) await db.query("select public.get_contact($1)", [id]);
-    await expect(db.query("select public.get_contact($1)", [ids[20]])).rejects.toThrow("contactLimit");
-    expect((await db.query("select * from public.get_contact($1)", [ids[0]])).rows).toHaveLength(1);
-    await expect(db.query("select * from public.contact_reveals")).rejects.toThrow("permission denied");
-    await expect(db.query("delete from public.contact_reveals")).rejects.toThrow("permission denied");
-    await admin();
-    await db.query("update public.contact_reveals set revealed_at=now()-interval '25 hours' where viewer_id=$1 and listing_id=$2", [buyer, ids[0]]);
-    await asUser(buyer);
-    expect((await db.query("select * from public.get_contact($1)", [ids[20]])).rows).toHaveLength(1);
     await asUser(seller);
-    for (const id of ids) await db.query("select public.get_contact($1)", [id]);
-    await admin();
-    expect((await db.query("select * from public.contact_reveals where viewer_id=$1", [seller])).rows).toHaveLength(0);
-    await db.query("delete from public.listings where id=any($1::uuid[])", [ids]);
+    expect((await db.query("select buyer_id::text,amount,status from public.listing_bids($1)", [item])).rows)
+      .toEqual([{ buyer_id: buyer, amount: "100000.00", status: "pending" }]);
+    await db.query("select public.decide_bid($1,$2,true)", [item, buyer]);
+    await asUser(buyer);
+    expect((await db.query("select * from public.get_contact($1)", [item])).rows)
+      .toEqual([{ phone: payload.phone, whatsapp: null }]);
+    await expect(db.query("select * from public.bids")).rejects.toThrow("permission denied");
+    await expect(
+      db.query("select public.place_bid($1,110000,$2,$3,'Pune',null)", [item, payload.district_id, payload.taluka_id]),
+    ).rejects.toThrow("bidAlreadyAccepted");
   });
   it("validates contact consent and location on server", async () => {
     await asUser(seller);
@@ -444,6 +456,7 @@ describe.sequential("database authorization and lifecycle", () => {
       "listings",
       "private_contacts",
       "listing_photos",
+      "bids",
       "reports",
     ])
       expect(

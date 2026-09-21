@@ -3,7 +3,7 @@
 ## Passed locally
 
 - TypeScript strict type check.
-- 63 automated tests: input/location/translation/WhatsApp validation; actual migration execution and RLS/grant behavior in PGlite; posting limits; moderation; private contact access; blocking; suspension; idempotent photo retries; OAuth callback validation/deduplication, cancellation, exchange retry, invalid configuration; deletion order and cleanup failure retry.
+- 104 automated tests: input/location/bid/translation/WhatsApp validation; actual migration execution and RLS/grant behavior in PGlite; current-consent enforcement; seller-only bid decisions; accepted-buyer-only contact access; posting limits; moderation; blocking; suspension; idempotent photo retries; OAuth callback validation/deduplication, cancellation, exchange retry, invalid configuration; deletion order and cleanup failure retry.
 - Android Hermes JavaScript/assets export and web export.
 - Expo Android prebuild/config generation.
 - Browser UI at a 360px viewport: Marathi/Hindi switch, district selector, guest account screen, in-app Hindi privacy policy with Zero21 Studio contact. Language preference persisted on reload.
@@ -14,6 +14,7 @@
 - Hosted Supabase deployment and unauthenticated smoke checks passed (see below). Google OAuth credentials, authenticated Storage workflows, and signed Android integration remain pending. Local SQL tests still stub auth/storage schemas and local deletion tests mock network APIs.
 - Signed Android device workflow, photo picker on real hardware, telephone/WhatsApp handoff, and Play submission are not verified by a JavaScript export.
 - Owner must host public policy pages, provide Google/Play/EAS setup, review translations, and collect 20 real consented listings.
+- Migration `202609210001_bids` and the regenerated public privacy/terms/deletion pages are not yet deployed. Hosted two-account bid authorization and v1-to-v2 consent upgrade remain release gates.
 - Expo Doctor: 20/21 checks pass. Its compatibility service requests `expo@57.0.24`, `expo-image-picker@57.0.19`, and `expo-image-manipulator@57.0.19`; npm returns 404 for each at verification time. Project pins available stable versions 57.0.23/57.0.18/57.0.18. Do not switch to preview SDK 58 to silence this. Upgrade to the matching stable patches when published, then rerun checks.
 - Dependency audit after patched test/image tooling: 0 critical, 0 high, 10 moderate (Expo/xcode/uuid toolchain), 1 low (esbuild development server). Do not apply audit's suggested Expo downgrade to SDK 46. Review upstream fixes before release; do not expose dev servers publicly.
 

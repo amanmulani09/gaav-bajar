@@ -13,7 +13,7 @@ Success means a signed Android preview build can browse staging data, sign in wi
 - `src/core/supabase/client.ts` already provides persistent MMKV sessions, PKCE, token refresh, and foreground/background refresh handling. It uses public URL/key environment variables.
 - `src/core/marketplace/repository.ts` already launches Google through Supabase, requests the account chooser, exchanges the authorization code, and deduplicates simultaneous delivery of the same code.
 - `src/application/MarketApp.tsx` listens for warm and cold deep links and auth state changes. Profile creation happens through `save_profile` after explicit consent, not automatically on first Google login.
-- Four SQL migrations define marketplace data, location data, referrals, consent, grants, RLS, and private photo storage. SQL checks confirmed email plus a Google identity. Deletion functions validate the bearer token before privileged operations.
+- Repository SQL migrations define marketplace data, locations, private bids and contacts, referrals, versioned consent, grants, RLS, and private photo storage. SQL checks confirm email plus a Google identity and require the current consent version. Deletion functions validate the bearer token before privileged operations.
 - **Setup blocker:** README instructs copying `.env.example`, but that file is missing. `.gitignore` contains only `node_modules`, contrary to README's claim that `.env` is ignored. Fix before adding credentials.
 - **Configuration failure:** the client checks only truthiness and one URL placeholder. A malformed nonempty URL can reach `createClient` during module initialization instead of showing the setup screen. Validate configuration before constructing the configured client.
 - **Cancellation behavior:** `login()` returns null on browser cancellation, but `requireGoogle()` turns that into `loginFailed`. Make cancellation a neutral return to the prior screen.
@@ -44,7 +44,7 @@ Configure Google consent branding, support details, public policy links, testing
 
 Allow `gaavbajar://auth/callback` in hosted Supabase Auth redirect settings. Configure the intended site/fallback URL explicitly. The Google callback and the app callback are different URLs and belong in different consoles. Existing Android package/scheme remain unchanged. Android SHA fingerprints are not required by this browser/Web-client flow; native Google sign-in would introduce separate configuration.
 
-Verify: OAuth reaches Google's account chooser, returns to the signed preview app, exchanges the code once, and produces a user with a Google identity and confirmed email. Profile remains incomplete until consent is saved.
+Verify: OAuth reaches Google's account chooser, returns to the signed preview app, exchanges the code once, and produces a user with a Google identity and confirmed email. Profile remains incomplete until the current consent version is saved.
 
 ### 4. Fix auth edge cases
 
@@ -54,7 +54,7 @@ Verify: cancel causes no error banner; denial and network failures are recoverab
 
 ### 5. Prove end-to-end authorization on Android
 
-Build a signed preview APK against staging. Test warm/cold OAuth return, app restart, foreground refresh, offline login, logout, and re-login. Use two Google test accounts plus guest access. Complete consent, post zero/three-photo listings, fetch signed images, retrieve authorized contacts, and verify cross-account edit/delete/upload attempts fail. Exercise both deletion functions and cleanup-failure retry using disposable staging data.
+Build a signed preview APK against staging. Test warm/cold OAuth return, app restart, foreground refresh, offline login, logout, and re-login. Use a seller, two buyers, and guest access. Complete current consent, post zero/three-photo listings, fetch signed images, exercise bid submit/update/reject/accept, verify only the accepted buyer retrieves contact, and verify cross-account edit/delete/upload/bid-decision attempts fail. Exercise both deletion functions and cleanup-failure retry using disposable staging data.
 
 Verify: `npm run check` and Android export pass, plus recorded hosted and device results. A JavaScript bundle export alone is insufficient.
 

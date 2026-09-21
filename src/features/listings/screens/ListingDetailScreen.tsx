@@ -1,11 +1,17 @@
 import { Image } from "expo-image";
 import { ScrollView, Text, View } from "react-native";
-import { Listing, locationLabel } from "../../../core/marketplace/domain";
+import {
+  Bid,
+  BidDraft,
+  Listing,
+  locationLabel,
+} from "../../../core/marketplace/domain";
 import { Button, T, s } from "../../../shared/ui";
 import { listingStyles } from "../styles";
 import { categoryIcons } from "../constants";
 import { listingPrice } from "../components/ListingCard";
 import { ListingShare } from "../components/ListingShare";
+import { BidSection } from "../components/BidSection";
 
 type Props = {
   t: T;
@@ -13,11 +19,17 @@ type Props = {
   own: boolean;
   signedIn: boolean;
   favorite: boolean;
+  bidDraft: BidDraft;
+  bid: Bid | null;
+  bids: Bid[];
   onBack: () => void;
   onEdit: () => void;
   onMarkSold: () => void;
   onDelete: () => void;
   onContact: (channel: "call" | "whatsapp") => void;
+  patchBidDraft: (update: Partial<BidDraft>) => void;
+  onSubmitBid: () => void;
+  onDecideBid: (buyerId: string, approve: boolean) => void;
   onReport: (kind: "listing" | "seller") => void;
   onBlock: () => void;
   onToggleFavorite: () => void;
@@ -29,11 +41,17 @@ export function ListingDetailScreen({
   own,
   signedIn,
   favorite,
+  bidDraft,
+  bid,
+  bids,
   onBack,
   onEdit,
   onMarkSold,
   onDelete,
   onContact,
+  patchBidDraft,
+  onSubmitBid,
+  onDecideBid,
   onReport,
   onBlock,
   onToggleFavorite,
@@ -87,6 +105,20 @@ export function ListingDetailScreen({
         <Text style={s.badge}>✓ {t("verified")}</Text>
         <Text style={s.small}>{t("identityNote")}</Text>
       </View>
+      {item.status === "active" && (
+        <BidSection
+          t={t}
+          own={own}
+          signedIn={signedIn}
+          draft={bidDraft}
+          bid={bid}
+          bids={bids}
+          patchDraft={patchBidDraft}
+          onSubmit={onSubmitBid}
+          onDecide={onDecideBid}
+          onContact={onContact}
+        />
+      )}
       {own ? (
         <>
           {["active", "pending", "draft"].includes(item.status) && (
@@ -99,15 +131,6 @@ export function ListingDetailScreen({
         </>
       ) : (
         <>
-          <Button
-            label={signedIn ? `☎ ${t("call")}` : t("loginContact")}
-            onPress={() => onContact("call")}
-          />
-          <Button
-            quiet
-            label={t("whatsapp")}
-            onPress={() => onContact("whatsapp")}
-          />
           <View style={s.row}>
             <Button
               quiet

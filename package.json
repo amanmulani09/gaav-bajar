@@ -45,7 +45,7 @@
     "test": "vitest run",
     "check": "npm run typecheck && npm test",
     "build:android": "expo export --platform android",
-    "build:web": "node scripts/prepare-web.cjs && expo export --platform web",
+    "build:web": "node scripts/prepare-web.cjs && expo export --platform web && node scripts/verify-web-build.cjs",
     "site:build": "node scripts/build-site.mjs",
     "assets:build": "node scripts/build-assets.cjs"
   },

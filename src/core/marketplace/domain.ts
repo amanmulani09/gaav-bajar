@@ -1,6 +1,7 @@
 import locations from "../../data/locations.json";
 
 export type Language = "mr" | "hi" | "en";
+export const currentConsentVersion = "onboarding-v2";
 export const categories = [
   "tractor",
   "equipment",
@@ -14,6 +15,27 @@ export const categories = [
 ] as const;
 export type Category = (typeof categories)[number];
 export type ListingStatus = "draft" | "active" | "pending" | "sold" | "removed";
+export type BidStatus = "pending" | "accepted" | "rejected";
+export type Bid = {
+  listing_id: string;
+  buyer_id: string;
+  buyer_name: string;
+  amount: number;
+  district_id: string;
+  taluka_id: string | null;
+  location: string;
+  note: string | null;
+  status: BidStatus;
+  created_at: string;
+  updated_at: string;
+};
+export type BidDraft = {
+  amount: string;
+  district_id: string;
+  taluka_id: string;
+  location: string;
+  note: string;
+};
 export type Listing = {
   id: string;
   owner_id: string;
@@ -39,6 +61,12 @@ export type Profile = {
   suspended: boolean;
   deleting: boolean;
 };
+export function hasCurrentConsent(profile: Profile | null): boolean {
+  return Boolean(
+    profile?.data_consent_at &&
+      profile.data_consent_version === currentConsentVersion,
+  );
+}
 export type Photo = { path: string; uri?: string; base64?: string };
 export type Draft = {
   id: string;
@@ -92,6 +120,28 @@ export function validateDraft(draft: Draft): string | null {
     return "phoneInvalid";
   if (draft.photos.length > 3) return "photoLimit";
   return null;
+}
+export function validateBid(draft: BidDraft): string | null {
+  if (
+    !/^\d+(\.\d{1,2})?$/.test(draft.amount) ||
+    Number(draft.amount) <= 0 ||
+    Number(draft.amount) > 1e10
+  )
+    return "bidAmountInvalid";
+  const district = locations.find((d) => d.id === draft.district_id);
+  if (
+    !district ||
+    (district.talukas.length > 0 &&
+      !district.talukas.some((t) => t.id === draft.taluka_id)) ||
+    !draft.location.trim() ||
+    draft.location.trim().length > 80
+  )
+    return "locationInvalid";
+  if (draft.note.trim().length > 500) return "bidNoteInvalid";
+  return null;
+}
+export function emptyBidDraft(): BidDraft {
+  return { amount: "", district_id: "", taluka_id: "", location: "", note: "" };
 }
 export function locationLabel(
   listing: Pick<Listing, "district_id" | "taluka_id" | "village">,
