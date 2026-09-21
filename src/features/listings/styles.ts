@@ -3,12 +3,12 @@ import { colors } from "../../shared/ui";
 
 export const listingStyles = StyleSheet.create({
   feedContent: { padding: 20, paddingBottom: 35 },
-  feedSection: { gap: 18, marginBottom: 18 },
+  feedSection: { gap: 16, marginBottom: 18 },
   hero: {
     backgroundColor: colors.dark,
-    padding: 23,
-    borderRadius: 22,
-    gap: 14,
+    padding: 19,
+    borderRadius: 18,
+    gap: 8,
   },
   eyebrow: {
     color: colors.orange,
@@ -18,11 +18,12 @@ export const listingStyles = StyleSheet.create({
   },
   heroTitle: {
     color: "white",
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: "800",
-    lineHeight: 44,
+    lineHeight: 36,
   },
-  heroBody: { fontSize: 15, color: "#D7E5D8", lineHeight: 26 },
+  heroBody: { fontSize: 14, color: "#D7E5D8", lineHeight: 22 },
+  searchBlock: { gap: 10 },
   chip: {
     paddingVertical: 12,
     paddingHorizontal: 17,
@@ -33,17 +34,23 @@ export const listingStyles = StyleSheet.create({
   },
   chipActive: { backgroundColor: colors.green, borderColor: colors.green },
   chipText: { color: colors.ink, fontSize: 14, fontWeight: "600" },
-  filterRow: { flexDirection: "row", gap: 12 },
+  filterRow: { flexDirection: "row", flexWrap: "wrap", gap: 12 },
+  locationFilter: { flexGrow: 1, flexBasis: 220 },
   listing: {
-    flexDirection: "row",
+    position: "relative",
     backgroundColor: colors.white,
     padding: 12,
     borderRadius: 18,
     borderWidth: 1,
     borderColor: colors.line,
   },
-  cardMain: { flex: 1, flexDirection: "row", gap: 15 },
+  cardMain: { flexDirection: "row", gap: 13 },
+  cardMainWithFavorite: { paddingRight: 39 },
+  cardText: { flex: 1, gap: 4 },
   favoriteButton: {
+    position: "absolute",
+    top: 10,
+    right: 10,
     width: 38,
     height: 38,
     alignItems: "center",
@@ -85,4 +92,11 @@ export const listingStyles = StyleSheet.create({
   photoRow: { flexDirection: "row", gap: 10 },
   editPhoto: { width: "100%", height: 100, borderRadius: 12 },
   detailPhoto: { width: 310, height: 240, borderRadius: 18 },
+  detailSummary: { gap: 7 },
+  detailPrice: {
+    color: colors.green,
+    fontSize: 27,
+    fontWeight: "800",
+    lineHeight: 38,
+  },
 });

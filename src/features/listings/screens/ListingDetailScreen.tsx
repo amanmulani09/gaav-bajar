@@ -1,5 +1,5 @@
 import { Image } from "expo-image";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, useWindowDimensions, View } from "react-native";
 import {
   Bid,
   BidDraft,
@@ -56,6 +56,9 @@ export function ListingDetailScreen({
   onBlock,
   onToggleFavorite,
 }: Props) {
+  const { width } = useWindowDimensions();
+  const photoWidth = Math.min(width - 40, 680);
+
   return (
     <>
       <Button quiet label={`← ${t("back")}`} onPress={onBack} />
@@ -69,7 +72,7 @@ export function ListingDetailScreen({
           <Image
             key={photo.path}
             source={{ uri: photo.url, cacheKey: photo.path }}
-            style={listingStyles.detailPhoto}
+            style={[listingStyles.detailPhoto, { width: photoWidth }]}
             accessibilityLabel={item.title}
             cachePolicy="memory-disk"
             contentFit="cover"
@@ -77,33 +80,28 @@ export function ListingDetailScreen({
           />
         ))}
         {!item.listing_photos.length && (
-          <View style={[listingStyles.detailPhoto, listingStyles.placeholder]}>
+          <View
+            style={[
+              listingStyles.detailPhoto,
+              listingStyles.placeholder,
+              { width: photoWidth },
+            ]}
+          >
             <Text style={{ fontSize: 80 }}>{categoryIcons[item.category]}</Text>
           </View>
         )}
       </ScrollView>
-      <Text style={listingStyles.category}>
-        {t(item.category)} · {t(item.status)}
-      </Text>
-      <Text style={s.h1}>{item.title || t("draft")}</Text>
-      <Text style={[listingStyles.price, { fontSize: 26 }]}>
-        {listingPrice(item, t)}
-      </Text>
-      <Button
-        quiet
-        label={`${favorite ? "♥" : "♡"} ${t(
-          favorite ? "removeFavorite" : "saveFavorite",
-        )}`}
-        onPress={onToggleFavorite}
-      />
-      <Text style={s.body}>{locationLabel(item)}</Text>
-      <Text style={s.body}>{item.description}</Text>
-      {item.status === "active" && <ListingShare key={item.id} item={item} t={t} />}
+      <View style={listingStyles.detailSummary}>
+        <Text style={listingStyles.category}>
+          {t(item.category)} · {t(item.status)}
+        </Text>
+        <Text style={s.h1}>{item.title || t("draft")}</Text>
+        <Text style={listingStyles.detailPrice}>{listingPrice(item, t)}</Text>
+        <Text style={s.body}>📍 {locationLabel(item)}</Text>
+      </View>
       <View style={s.card}>
-        <Text style={s.small}>{t("seller")}</Text>
-        <Text style={s.h2}>{item.seller_name}</Text>
-        <Text style={s.badge}>✓ {t("verified")}</Text>
-        <Text style={s.small}>{t("identityNote")}</Text>
+        <Text style={s.label}>{t("description")}</Text>
+        <Text style={s.body}>{item.description}</Text>
       </View>
       {item.status === "active" && (
         <BidSection
@@ -117,6 +115,21 @@ export function ListingDetailScreen({
           onSubmit={onSubmitBid}
           onDecide={onDecideBid}
           onContact={onContact}
+        />
+      )}
+      <View style={s.card}>
+        <Text style={s.small}>{t("seller")}</Text>
+        <Text style={s.h2}>{item.seller_name}</Text>
+        <Text style={s.badge}>✓ {t("verified")}</Text>
+        <Text style={s.small}>{t("identityNote")}</Text>
+      </View>
+      {!own && (
+        <Button
+          quiet
+          label={`${favorite ? "♥" : "♡"} ${t(
+            favorite ? "removeFavorite" : "saveFavorite",
+          )}`}
+          onPress={onToggleFavorite}
         />
       )}
       {own ? (
@@ -152,6 +165,9 @@ export function ListingDetailScreen({
       <Text selectable style={s.small}>
         {t("listingId")}: {item.id}
       </Text>
+      {item.status === "active" && (
+        <ListingShare key={item.id} item={item} t={t} />
+      )}
     </>
   );
 }

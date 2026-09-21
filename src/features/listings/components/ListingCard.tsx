@@ -33,7 +33,10 @@ export function ListingCard({
       <Pressable
         accessibilityRole="button"
         onPress={onPress}
-        style={listingStyles.cardMain}
+        style={[
+          listingStyles.cardMain,
+          onToggleFavorite && listingStyles.cardMainWithFavorite,
+        ]}
       >
         {item.listing_photos[0]?.url ? (
           <Image
@@ -52,17 +55,17 @@ export function ListingCard({
             <Text style={{ fontSize: 38 }}>{categoryIcons[item.category]}</Text>
           </View>
         )}
-        <View style={{ flex: 1, gap: 5 }}>
-          <Text style={listingStyles.category}>
-            {t(item.category)}
-            {own ? ` · ${t(item.status)}` : ""}
-          </Text>
+        <View style={listingStyles.cardText}>
           <Text style={listingStyles.listingTitle} numberOfLines={2}>
             {item.title || t("draft")}
           </Text>
           <Text style={listingStyles.price}>{listingPrice(item, t)}</Text>
           <Text style={s.small} numberOfLines={2}>
-            {locationLabel(item)}
+            📍 {locationLabel(item)}
+          </Text>
+          <Text style={listingStyles.category}>
+            {categoryIcons[item.category]} {t(item.category)}
+            {own ? ` · ${t(item.status)}` : ""}
           </Text>
         </View>
       </Pressable>

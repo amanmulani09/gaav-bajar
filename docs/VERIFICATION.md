@@ -14,7 +14,7 @@
 - Hosted Supabase deployment and unauthenticated smoke checks passed (see below). Google OAuth credentials, authenticated Storage workflows, and signed Android integration remain pending. Local SQL tests still stub auth/storage schemas and local deletion tests mock network APIs.
 - Signed Android device workflow, photo picker on real hardware, telephone/WhatsApp handoff, and Play submission are not verified by a JavaScript export.
 - Owner must host public policy pages, provide Google/Play/EAS setup, review translations, and collect 20 real consented listings.
-- Migration `202609210001_bids` and the regenerated public privacy/terms/deletion pages are not yet deployed. Hosted two-account bid authorization and v1-to-v2 consent upgrade remain release gates.
+- Migration `202609210001_bids` is not yet deployed. Hosted two-account bid authorization and v1-to-v2 consent upgrade remain release gates. The regenerated public privacy/terms/deletion pages were included in the 21 September web deployment.
 - Expo Doctor: 20/21 checks pass. Its compatibility service requests `expo@57.0.24`, `expo-image-picker@57.0.19`, and `expo-image-manipulator@57.0.19`; npm returns 404 for each at verification time. Project pins available stable versions 57.0.23/57.0.18/57.0.18. Do not switch to preview SDK 58 to silence this. Upgrade to the matching stable patches when published, then rerun checks.
 - Dependency audit after patched test/image tooling: 0 critical, 0 high, 10 moderate (Expo/xcode/uuid toolchain), 1 low (esbuild development server). Do not apply audit's suggested Expo downgrade to SDK 46. Review upstream fixes before release; do not expose dev servers publicly.
 
@@ -32,6 +32,8 @@ Project: `kzfajcdbnkbchfywgbjz` (`gaav-bajar`), Mumbai region. Setup used the ow
 - Saved exact redirects `gaavbajar://auth/callback` and `https://gaav-bajar.vercel.app/auth/callback`. Existing Site URL remains `http://localhost:3000`; the app passes its explicit callback.
 
 ## Web deployment — 2026-09-20
+
+- On 21 September 2026, production deployment `HPrkFYDZqadzcQpKgE26HUncNevK` fixed the unconfigured web bundle at `https://gaav-bajar.vercel.app`. Vercel Production now contains the public Supabase URL and anon/publishable key. The deployed bundle passed the repository build guard, an iPhone Safari user-agent request received that bundle, and a public-key districts REST smoke check returned HTTP 200. The build now fails if public Supabase values are missing or if a secret-key prefix is supplied.
 
 - Branding update deployed as `dpl_H15raEWyniw9PoHauj7TGFfQPHWt`: header uses the existing custom house-and-leaf logo, favicon source is 256px, and public privacy/terms/account-deletion pages are included in web exports. Web and Android exports passed; 63 tests passed. Live header visually verified.
 - Google Branding now has the production homepage, privacy policy, terms links, and `gaav-bajar.vercel.app` authorized domain. App name is `Gaav Bajar`. Logo upload is blocked by Chrome extension file URL access. Google brand verification/publication is still pending; do not claim the Supabase domain label has been replaced.

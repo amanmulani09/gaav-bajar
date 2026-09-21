@@ -82,21 +82,20 @@ export function BrowseScreen({
         <Text style={listingStyles.heroTitle}>{t("hero")}</Text>
         <Text style={listingStyles.heroBody}>{t("heroBody")}</Text>
       </View>
-      <View style={s.row}>
-        <View style={{ flex: 1 }}>
-          <Field
-            label={t("search")}
-            placeholder={t("titleHint")}
-            value={query}
-            onChangeText={setQuery}
-            returnKeyType="search"
-            onSubmitEditing={() => setSearch(query)}
-            maxLength={100}
-          />
-        </View>
-        <View style={{ paddingTop: 26 }}>
-          <Button label={t("searchAction")} onPress={() => setSearch(query)} />
-        </View>
+      <View style={listingStyles.searchBlock}>
+        <Field
+          label={t("search")}
+          placeholder={t("titleHint")}
+          value={query}
+          onChangeText={setQuery}
+          returnKeyType="search"
+          onSubmitEditing={() => setSearch(query)}
+          maxLength={100}
+        />
+        <Button
+          label={`🔍 ${t("searchAction")}`}
+          onPress={() => setSearch(query)}
+        />
       </View>
       <ScrollView
         horizontal
@@ -134,7 +133,7 @@ export function BrowseScreen({
         ))}
       </ScrollView>
       <View style={listingStyles.filterRow}>
-        <View style={{ flex: 1 }}>
+        <View style={listingStyles.locationFilter}>
           <Select
             label={t("district")}
             value={district}
@@ -146,7 +145,7 @@ export function BrowseScreen({
             t={t}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={listingStyles.locationFilter}>
           <Select
             label={t("taluka")}
             value={taluka}
